@@ -94,6 +94,11 @@ Filenames use labels in increasing order. Inside a result, `d1` and `d2` follow 
 
 ## Reproduce, resume, verify, and package
 
+To retrieve the published dataset instead of recomputing it, run
+`python scripts/download_catalogue.py --output ../hassett-expanded-500`, then
+run the verifier below. Downloads are pinned to the original release index hash.
+See [development.md](development.md) for CI and the complete current release workflow.
+
 Run the following commands from the source project's root with Python 3.10 or later. The engine, runner, catalogue verifier, and packaging scripts use the standard library. Node is needed only for the JavaScript interaction harness. The commands below use a sibling data directory so that the source package and expanded data remain separate.
 
 ### Compute the finite range
@@ -112,7 +117,7 @@ The default per-pair limits are 5,000,000 work units and 60 seconds. Adjust them
 ```bash
 python scripts/verify_catalogue.py ../hassett-expanded-500/catalogue-index.json \
   --no-limits --progress-every 1000 \
-  --report docs/catalogue-verification-500.json
+  --report build/validation/catalogue-verification-500.json
 ```
 
 The verifier processes one pair at a time and writes the aggregate success report only after all checks pass. Here `--no-limits` removes its independent root-vector verification budget; it is separate from the runner's per-pair limits. To verify an extracted data archive, point this command at its `catalogue-index.json`.
@@ -129,8 +134,8 @@ Omit `--hosted-data` to run the base release checks with the embedded 66-pair ca
 
 ```bash
 python scripts/package_catalogue.py ../hassett-expanded-500/catalogue-index.json \
-  --verification docs/catalogue-verification-500.json --output ../deliverables
-python scripts/package_release.py --output ../deliverables
+  --verification build/validation/catalogue-verification-500.json --output ../deliverables
+python scripts/package_release.py --output ../deliverables --validation-dir build/validation
 ```
 
 The first command requires a passing verification report for the exact index being packaged. It rechecks stored shard hashes and creates `hassett-catalogue-500.zip`, `hassett-component-counts-500.csv`, and `catalogue-summary-500.json`. The second creates the source archive `hassett-lattice-explorer.zip` plus standalone HTML/PDF deliverables and their checksum file; the expanded data archive is separate. The PDF is included in the source release. To regenerate it from the mathematical guide, run `python scripts/build_guide.py` with Pandoc and XeLaTeX installed before packaging.
@@ -139,7 +144,7 @@ The first command requires a passing verification report for the exact index bei
 
 ```bash
 python scripts/build_hosted_site.py ../hassett-expanded-500 \
-  --verification docs/catalogue-verification-500.json --output dist \
+  --verification build/validation/catalogue-verification-500.json --output dist \
   --summary-csv ../deliverables/hassett-component-counts-500.csv \
   --source-archive ../deliverables/hassett-lattice-explorer.zip
 ```

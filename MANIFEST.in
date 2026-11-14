@@ -1,0 +1,10 @@
+include README.md PROBLEM.md ALGORITHM.md WEBSITE.md IMPORT-VERIFICATION.md
+include LICENSE CITATION.cff .gitignore
+graft scripts
+graft tests
+graft docs
+graft web
+graft references
+graft .github
+prune web/data
+global-exclude __pycache__ *.py[cod] *.log *.aux *.out *.toc
