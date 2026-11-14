@@ -102,6 +102,15 @@ filename = directory | "quote ' ; dollar $ and spaces.json.gz"
 writeHassettResult(filename,r)
 s = readHassettResult(filename,Classification=>true)
 assert(hassettResultData(s,Timing=>false) === hassettResultData(r,Timing=>false))
+-- Core get/open interprets leading ! as a pipe; our file APIs must not.
+previousDirectory = currentDirectory()
+changeDirectory directory
+literal = "!touch HASSETT-UNEXPECTED-COMMAND"
+writeHassettResult(literal,r)
+assert(fileExists("./" | literal))
+assert(not fileExists "HASSETT-UNEXPECTED-COMMAND")
+assert verifyHassettResult readHassettResult literal
+changeDirectory previousDirectory
 -- Jansson rejects this integer: the package must use JSON's exact fallback.
 data = new MutableHashTable from pairs r
 diag = new MutableHashTable from pairs r#"diagnostics"

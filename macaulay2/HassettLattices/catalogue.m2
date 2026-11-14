@@ -62,6 +62,7 @@ aggregateRows = rows -> (
         "total_uncompressed_bytes" => total "uncompressed_bytes"})
 
 fileSHA256 = filename -> (
+    filename = safeFilename filename;
     temporary := temporaryFileName();
     command := "if command -v sha256sum >/dev/null 2>&1; then sha256sum; " |
         "else shasum -a 256; fi < " | shellQuote filename | " > " | shellQuote temporary;
@@ -83,8 +84,7 @@ buildHassettCatalogue(String, ZZ) := o -> (directory, bound) -> (
     require(o.StopAfter === null or integer o.StopAfter > 0,
         "StopAfter must be positive or null");
     newBudget o;
-    safeFilename directory;
-    directory = directory | "/";
+    directory = safeFilename directory | "/";
     makeDirectory(directory | "pairs/");
     labels := validHassettDiscriminants bound;
     pairList := subsets(labels, 2);

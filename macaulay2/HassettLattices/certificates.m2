@@ -158,15 +158,19 @@ siblingTemporary = filename -> (
     temporaryCounter = temporaryCounter + 1;
     filename | ".tmp-" | toString processID() | "-" | toString temporaryCounter)
 safeFilename = filename -> (
+    require(#filename > 0, "filename must not be empty");
     require(not member(0, ascii filename), "NUL is not allowed in a filename");
-    filename)
+    -- Core treats a leading ! as a shell pipe. Resolve relative paths before
+    -- any Core file operation so every caller-supplied name stays literal.
+    if substring(0,1,filename) == "/" then filename
+    else currentDirectory() | filename)
 parentDirectory = filename -> (
     parts := separate("/", filename);
     if #parts == 1 then "." else concatenate between("/", drop(parts,-1)) | "/")
 shellQuote = filename -> "'" | concatenate apply(ascii safeFilename filename,
     c -> if c == 39 then "'\\''" else ascii {c}) | "'"
 atomicWrite = (filename, bytes) -> (
-    safeFilename filename;
+    filename = safeFilename filename;
     makeDirectory parentDirectory filename;
     temporary := siblingTemporary filename;
     temporary << bytes << close;
@@ -176,6 +180,7 @@ atomicWrite = (filename, bytes) -> (
     filename)
 
 gzipFile = (filename, bytes) -> (
+    filename = safeFilename filename;
     makeDirectory parentDirectory filename;
     source := siblingTemporary filename;
     target := siblingTemporary filename;
@@ -190,6 +195,7 @@ gzipFile = (filename, bytes) -> (
     filename)
 
 readBytes = filename -> (
+    filename = safeFilename filename;
     if not match("[.]gz$", filename) then return get filename;
     -- Reading a certificate must not require write access to its directory.
     temporary := temporaryFileName();

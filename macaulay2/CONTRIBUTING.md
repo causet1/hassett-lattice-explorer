@@ -56,6 +56,10 @@ integers; unbounded mathematical coordinates use `while` loops over `ZZ`, so
 large inputs still reach the cooperative resource checks. These are correctness
 concerns, not cosmetic choices.
 
+Core file I/O treats a leading `!` as a shell pipe. All public file paths are
+resolved to absolute literal paths before reaching Core, and shell-tool paths
+are single-quoted separately. Tests cover both mechanisms.
+
 `ForeignFunctions` before version 0.7 had a garbage-collection issue for GMP
 objects; the minimum Macaulay2 version is 1.26.05. The package checks its version.
 Monotonic timing and atomic rename use documented POSIX APIs via the same FFI.

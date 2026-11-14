@@ -127,7 +127,7 @@
       "matched": true
     }
   ],
-  "elapsed_seconds": 0.226431,
+  "elapsed_seconds": 0.236681,
   "checks": [
     "Exact coverage of every unordered distinct valid label pair through the bound.",
     "No repeated label pairs, filenames, component ids, exact Gram matrices, or construction origins.",
@@ -788,13 +788,13 @@
   },
   "macaulay2_source_sha256": {
     "macaulay2/HassettLattices/arithmetic.m2": "2b73c973d6f762b9b5db96514f1c191f60ab15cd42e2e86428ce033b89663dfb",
-    "macaulay2/HassettLattices/catalogue.m2": "70f8600202c6a96314e65cf05ffbf45499d3edc51f1ed8457ae71d5de7080dc1",
-    "macaulay2/HassettLattices/certificates.m2": "8546a7193d4e35ce553d2ad2d9541eec7dd2e6e67d8461fb8bcf11609c2e07b8",
+    "macaulay2/HassettLattices/catalogue.m2": "069e80c4874f9f8b2ac3d28a4d174af8ab96a3332a604c9fc5c92871445fe346",
+    "macaulay2/HassettLattices/certificates.m2": "9794a8804c737aea26cf3e8b436b9304a9674d727eecd016367715a5a0a0d0e9",
     "macaulay2/HassettLattices/cli.m2": "be3a425ec059ee8219494e2f40ec7ee86070525811816dff0526e87e28650baf",
     "macaulay2/HassettLattices/documentation.m2": "0fe2ab7eab338d9130cc71a7017daa8d25d1a81d24dd8374f3031700c8b4556e",
     "macaulay2/HassettLattices/intersection.m2": "24276debfe077a4a08797eacd17aac1a8dee2582a503f808ca87c3c11617603b",
     "macaulay2/HassettLattices/lattices.m2": "0d1b432a8198db0d0e8a77a2d61425e9df9cf7a34ea706f732865897c085b3c9",
-    "macaulay2/HassettLattices/tests.m2": "166a6bac2016a1cf16296cb4a66c789ed06e33b8b7aefe342c07294e239425cf",
+    "macaulay2/HassettLattices/tests.m2": "0e74ed846d5ddcbf9b2ee01099a763b8c0ca8b0e0290c1f8da5aab374e80661a",
     "macaulay2/HassettLattices.m2": "36f38f1ca96fc84b89e48138b1147f7fbe866801dcf8d98c8ca17214737adb64",
     "macaulay2/benchmark-hassett.m2": "c5b49bebd8fad17fde416e381057192d672ecd6d5878f115dfb58513acd0fdb8",
     "macaulay2/build-docs.m2": "8582a6c5e56b0af037b51091c5a400ef9500b9a0b8aa12f4a3760f63f282d719",
@@ -807,8 +807,8 @@
     "package_tests_passed": true,
     "documentation_installation_passed": true,
     "cli_integration_passed": true,
-    "package_test_log": " -- capturing check(0, \"HassettLattices\") -- 2.08291s elapsed\n -- capturing check(1, \"HassettLattices\") -- 2.64206s elapsed\n -- capturing check(2, \"HassettLattices\") -- .863832s elapsed\n -- running   check(3, \"HassettLattices\") -- 14.4864s elapsed\n -- running   check(4, \"HassettLattices\") -- 11.6511s elapsed\n",
-    "documentation_log": " -- capturing example results for \"validHassettDiscriminant\"                 -- .396333s elapsed\n -- capturing example results for \"changeHassettBasis\"                       -- .24461s elapsed\n -- making example results for \"hassettResultData\"                           -- 7.61127s elapsed\n -- capturing example results for \"latticeK3Association\"                     -- .250168s elapsed\n -- capturing example results for \"hassettIntersection\"                      -- .260361s elapsed\n -- capturing example results for \"saturationIndices\"                        -- .239858s elapsed\n -- making example results for \"hassettCatalogueSummary\"                     -- 7.7287s elapsed\n -- capturing example results for \"HassettLattices\"                          -- .320377s elapsed\n -- capturing example results for \"hassettLattice\"                           -- .265734s elapsed\n -- capturing example results for \"hassettInvariants\"                        -- .254826s elapsed\n",
+    "package_test_log": " -- capturing check(0, \"HassettLattices\") -- 1.45284s elapsed\n -- capturing check(1, \"HassettLattices\") -- 1.56143s elapsed\n -- capturing check(2, \"HassettLattices\") -- .600246s elapsed\n -- running   check(3, \"HassettLattices\") -- 10.2618s elapsed\n -- running   check(4, \"HassettLattices\") -- 13.7407s elapsed\n",
+    "documentation_log": " -- capturing example results for \"validHassettDiscriminant\"                 -- .418278s elapsed\n -- capturing example results for \"changeHassettBasis\"                       -- .286349s elapsed\n -- making example results for \"hassettResultData\"                           -- 8.77332s elapsed\n -- capturing example results for \"latticeK3Association\"                     -- .328214s elapsed\n -- capturing example results for \"hassettIntersection\"                      -- .364969s elapsed\n -- capturing example results for \"saturationIndices\"                        -- .253115s elapsed\n -- making example results for \"hassettCatalogueSummary\"                     -- 9.04639s elapsed\n -- capturing example results for \"HassettLattices\"                          -- .341377s elapsed\n -- capturing example results for \"hassettLattice\"                           -- .29512s elapsed\n -- capturing example results for \"hassettInvariants\"                        -- .331248s elapsed\n",
     "cli_log": "Macaulay2 CLI: exact JSON, quoted paths, certificates, limits, and resume passed.\n"
   }
 }
