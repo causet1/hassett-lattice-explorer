@@ -1,0 +1,8 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+HassettLattices = "670c18ae-105a-4f97-b98b-3ddf261c3c95"
+
+[compat]
+Documenter = "1"
+HassettLattices = "0.1"
+julia = "1.10"

@@ -88,6 +88,9 @@ class ReleasePipelineTests(unittest.TestCase):
                     self.assertEqual(len(payload), entry['bytes'])
                     self.assertEqual(hashlib.sha256(payload).hexdigest(), entry['sha256'])
                 self.assertIn(prefix+'references/problem-statement.png', names)
+                self.assertIn(prefix+'julia/HassettLattices/Project.toml', names)
+                self.assertIn(prefix+'julia/HassettLattices/src/HassettLattices.jl', names)
+                self.assertFalse(any(n.endswith('/Manifest.toml') for n in names))
                 self.assertFalse(any('/build/' in n or '/.git/' in n for n in names))
 
     def test_pinned_download_resume_and_failure(self):

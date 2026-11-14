@@ -1,0 +1,43 @@
+name: Verify Julia package and cross-language certificates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  julia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        julia: ['1.10', '1']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: julia-actions/setup-julia@4c0cb0fce8556fdb04a90347310e5db8b1f98fb9 # v2
+        with:
+          version: ${{ matrix.julia }}
+      - uses: julia-actions/cache@d10a6fd8f31b12404a54613ebad242900567f2b9 # v2
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.14'
+      - name: Package tests and Aqua
+        run: julia --project=julia/HassettLattices -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
+      - name: Cross-language agreement and independent classification audit
+        run: python scripts/validate_julia.py
+      - name: Documentation and doctests
+        run: |
+          julia --project=julia/HassettLattices/docs -e 'using Pkg; Pkg.develop(path="julia/HassettLattices"); Pkg.instantiate()'
+          julia --project=julia/HassettLattices/docs julia/HassettLattices/docs/make.jl
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: julia-validation-${{ matrix.julia }}
+          path: |
+            build/julia-validation/validation.json
+            julia/HassettLattices/docs/build/
+          if-no-files-found: warn

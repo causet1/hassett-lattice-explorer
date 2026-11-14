@@ -166,6 +166,12 @@ def _vectors_with_norm_pairing(g, norm, pairing, budget):
 
 
 def _root(g, budget):
+    budget.tick()
+    a, b, c = _schur(g)
+    # H(y,z) >= (min(a,c)-abs(b))*(y*y+z*z). A norm-two
+    # vector requires H(y,z)=6-(h.r)^2 <= 6; y=z=0 cannot work.
+    if min(a, c) - abs(b) > 6:
+        return None
     # |h.r|^2 <= h^2*r^2 = 6, so the five pairings suffice.
     for pairing in range(-2, 3):
         for v in _vectors_with_norm_pairing(g, 2, pairing, budget):
@@ -293,6 +299,35 @@ def _normalize(d1, d2):
     return (d1, d2) if d1 % 6 == 2 else (d2, d1)
 
 
+def _linear_residues(coefficient, rhs, modulus):
+    """All solutions of coefficient*x = rhs modulo modulus, in [0,modulus)."""
+    divisor = gcd(coefficient, modulus)
+    if rhs % divisor:
+        return ()
+    step = modulus // divisor
+    start = 0 if step == 1 else (pow(coefficient // divisor, -1, step) * (rhs // divisor)) % step
+    return range(start, modulus, step)
+
+
+def _saturation_residues(d1, p, q, aa, tau, n, budget):
+    """Solve the two linear integrality conditions before testing the norm.
+
+    Elimination gives d1*b = p*q - 3*tau (mod n). For each solution b,
+    solve 3*a = -p*b-q (mod n) and recheck the second original equation
+    (essential when 3 divides n). Sorting preserves historical origin order.
+    """
+    residues = []
+    for b in _linear_residues(d1, p*q - 3*tau, n):
+        budget.tick()
+        if gcd(b, n) != 1:
+            continue
+        for a in _linear_residues(3, -p*b-q, n):
+            budget.tick()
+            if (p*a + aa*b + tau) % n == 0:
+                residues.append((a, b))
+    return sorted(residues)
+
+
 def intersection_components(d1, d2, *, limits=Limits()):
     """Compute all reduced irreducible components of C_d1 intersect C_d2.
 
@@ -314,6 +349,7 @@ def intersection_components(d1, d2, *, limits=Limits()):
     if p * q == 0:
         lower = max(0, lower)
     candidates, bases, components = [], [], []
+    determinant_buckets = {}
     counts = {
         "overlattice_parameter_candidates": 0,
         "integral_overlattices": 0,
@@ -325,6 +361,8 @@ def intersection_components(d1, d2, *, limits=Limits()):
 
     def accept(g, base, tau, n, a, b):
         counts["accepted_marked_lattices"] += 1
+        det = determinant(g)
+        bucket = determinant_buckets.setdefault(det, [])
         embed = [[1, 0, -a], [0, 1, -b], [0, 0, n]]
         origin = {
             "tau": tau, "index": n, "a": a, "b": b,
@@ -333,10 +371,8 @@ def intersection_components(d1, d2, *, limits=Limits()):
             "embedding": embed,
             "basis_map_to_representative": [row[:] for row in _IDENTITY],
         }
-        for component in components:
+        for component in bucket:
             budget.tick()
-            if component["determinant"] != determinant(g):
-                continue
             change = _isometry(g, component["gram"], budget)
             if change is not None:
                 origin["basis_map_to_representative"] = change
@@ -344,17 +380,19 @@ def intersection_components(d1, d2, *, limits=Limits()):
                 component["origins"].append(origin)
                 counts["duplicate_count"] += 1
                 return
-        components.append({
+        component = {
             "id": f"{d1}-{d2}-c{len(components) + 1:02d}",
             "gram": g,
-            "determinant": determinant(g),
+            "determinant": det,
             "rank": 3,
             "h": [1, 0, 0],
             "tau": tau,
             "index": n,
             "origins": [origin],
             "k3_association": _k3_association(g, budget),
-        })
+        }
+        components.append(component)
+        bucket.append(component)
 
     for tau in range(lower, upper + 1):
         budget.tick()
@@ -378,30 +416,27 @@ def intersection_components(d1, d2, *, limits=Limits()):
         for n in _indices(det, budget):
             if n == 1:
                 continue
-            for a in range(n):
-                for b in range(n):
-                    budget.tick()
-                    counts["overlattice_parameter_candidates"] += 1
-                    if gcd(b, n) != 1:
-                        continue
-                    hn = 3 * a + p * b + q
-                    un = p * a + aa * b + tau
-                    wn = 3 * a * a + aa * b * b + bb + 2 * p * a * b + 2 * q * a + 2 * tau * b
-                    if hn % n or un % n or wn % (n * n):
-                        continue
-                    hp, up, wp = hn // n, un // n, wn // (n * n)
-                    g = [[3, p, hp], [p, aa, up], [hp, up, wp]]
-                    counts["integral_overlattices"] += 1
-                    if (wp - hp) % 2:
-                        counts["rejected_parity"] += 1
-                        continue
-                    if _root(g, budget) is not None:
-                        counts["rejected_roots"] += 1
-                        continue
-                    if determinant(g) * n * n != det:
-                        raise AssertionError("Internal index/discriminant identity failure")
-                    record["accepted_overlattices"] += 1
-                    accept(g, base, tau, n, a, b)
+            for a, b in _saturation_residues(d1, p, q, aa, tau, n, budget):
+                budget.tick()
+                counts["overlattice_parameter_candidates"] += 1
+                hn = 3 * a + p * b + q
+                un = p * a + aa * b + tau
+                wn = 3 * a * a + aa * b * b + bb + 2 * p * a * b + 2 * q * a + 2 * tau * b
+                if wn % (n * n):
+                    continue
+                hp, up, wp = hn // n, un // n, wn // (n * n)
+                g = [[3, p, hp], [p, aa, up], [hp, up, wp]]
+                counts["integral_overlattices"] += 1
+                if (wp - hp) % 2:
+                    counts["rejected_parity"] += 1
+                    continue
+                if _root(g, budget) is not None:
+                    counts["rejected_roots"] += 1
+                    continue
+                if determinant(g) * n * n != det:
+                    raise AssertionError("Internal index/discriminant identity failure")
+                record["accepted_overlattices"] += 1
+                accept(g, base, tau, n, a, b)
 
     budget.check_time()
     counts.update({

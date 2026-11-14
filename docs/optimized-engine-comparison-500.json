@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "pairs": 13530,
+  "component_records": 1636925,
+  "origins": 1698033,
+  "comparison": "Exact equality of all components (including every origin and certificate) and starting candidates; excludes diagnostics/work counts.",
+  "catalogue_index_sha256": "6b9eef278531c5f12c725c3bc5b88504568ad5e0e25dcf03df4851a0da723a60",
+  "core_sha256": "4cbc53393a331656c40a4f974829da64088475473d0ee4ceea2dd57151c9c56f",
+  "elapsed_seconds": 148.66396649647504
+}

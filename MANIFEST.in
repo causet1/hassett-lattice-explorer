@@ -6,5 +6,7 @@ graft docs
 graft web
 graft references
 graft .github
+graft julia
 prune web/data
-global-exclude __pycache__ *.py[cod] *.log *.aux *.out *.toc
+prune julia/HassettLattices/docs/build
+global-exclude __pycache__ *.py[cod] *.log *.aux *.out *.toc Manifest.toml

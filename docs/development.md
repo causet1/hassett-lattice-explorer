@@ -27,6 +27,34 @@ and `IMPORT-VERIFICATION.md` are historical evidence and are not overwritten.
 The JavaScript harness accepts `--report PATH`; legacy `--write-report` now writes
 to `build/validation/web_validation.json`.
 
+## Julia package
+
+The native package is in `julia/HassettLattices`. It follows Hecke's coding
+conventions and uses Hecke, Nemo/FLINT, JSON.jl, CodecZlib and ArgParse through
+their APIs. See its [contributor guide](../julia/HassettLattices/CONTRIBUTING.md)
+for formatting, dependencies, documentation and backend attribution.
+
+```sh
+julia --project=julia/HassettLattices -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
+python scripts/validate_julia.py
+```
+
+The Julia CI matrix covers Julia 1.10 and the current stable release on Linux.
+It runs package tests, Aqua, Documenter/doctests, native catalogue generation,
+cross-language component/origin comparison, independent certificate validation,
+and the independent classification audit through 42. Mathematical comparison
+ignores nonunique root and isometry witnesses, which are checked separately.
+The package is installable from the repository subdirectory; registration in
+General and a Macaulay2 implementation remain separate work.
+
+The [performance report](performance.md) describes the congruence optimization,
+baseline benchmarks, and exact regression comparison against the entire
+previously certified catalogue through 500. Source distributions and source ZIPs
+include the Julia package and exclude local Manifests and generated doc builds.
+The [native validation snapshot](julia-validation-2026-11-14.json) records 1,545
+passing Julia checks, documentation/doctests, 66 independently audited pairs,
+and four additional cross-language stress cases, including saturation index 68.
+
 ## Retrieve and verify the published catalogue
 
 On 2026-11-14, source commit `aaedcfaf6273fd4d9f0a4e02b7312bf8dd50c771`

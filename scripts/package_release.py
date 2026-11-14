@@ -24,7 +24,7 @@ def main():
     for path in must_exist:
         if not path.is_file():
             raise FileNotFoundError(f'Required validated artifact missing: {path.name}')
-    allowed_roots = {'hassett_lattices', 'tests', 'scripts', 'docs', 'web', 'references', '.github'}
+    allowed_roots = {'hassett_lattices', 'julia', 'tests', 'scripts', 'docs', 'web', 'references', '.github'}
     allowed_files = {'LICENSE', 'README.md', 'PROBLEM.md', 'ALGORITHM.md', 'WEBSITE.md',
                      'IMPORT-VERIFICATION.md', 'pyproject.toml', 'MANIFEST.in', 'CITATION.cff', '.gitignore'}
     excluded_suffixes = {'.pyc', '.pyo', '.log', '.aux', '.out', '.toc'}
@@ -37,7 +37,9 @@ def main():
             continue
         if rel.parts[0] not in allowed_roots and str(rel) not in allowed_files:
             continue
-        if any(part in {'__pycache__', 'tmp', '.pytest_cache'} for part in rel.parts):
+        if any(part in {'__pycache__', 'tmp', '.pytest_cache', 'build'} for part in rel.parts):
+            continue
+        if path.name == 'Manifest.toml':
             continue
         if path.suffix in excluded_suffixes:
             continue

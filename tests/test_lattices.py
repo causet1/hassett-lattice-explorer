@@ -85,6 +85,29 @@ class PublishedCases(unittest.TestCase):
 
 
 class CertificateTests(unittest.TestCase):
+    def test_root_bound_keeps_the_equality_case(self):
+        g = [[3, 0, 0], [0, 2, 0], [0, 0, 4]]
+        root = norm_two_vector(g)
+        self.assertIsNotNone(root)
+        self.assertEqual(sum(root[i]*g[i][j]*root[j] for i in range(3) for j in range(3)), 2)
+        self.assertIsNone(norm_two_vector([[3, 0, 0], [0, 3, 0], [0, 0, 3]]))
+
+    def test_congruence_sieve_matches_exhaustive_residues(self):
+        from hassett_lattices.core import _Budget, _normalize, _saturation_residues
+        budget = _Budget(Limits(max_work=None, timeout_seconds=None))
+        # All three normalization cases, noninvertible coefficients, negative
+        # parameters, and indices divisible by 3 (the extra equation matters).
+        for pair in [(8, 14), (8, 12), (12, 18), (20, 42), (30, 54)]:
+            d1, d2 = _normalize(*pair)
+            p, q = int(d1 % 6 == 2), int(d2 % 6 == 2)
+            aa = (d1+p)//3
+            for tau in range(-12, 13):
+                for n in range(1, 41):
+                    expected = [(a, b) for a in range(n) for b in range(n)
+                                if gcd(b, n) == 1 and (3*a+p*b+q) % n == 0
+                                and (p*a+aa*b+tau) % n == 0]
+                    self.assertEqual(_saturation_residues(d1, p, q, aa, tau, n, budget), expected)
+
     def test_every_origin_in_published_cases(self):
         checked = 0
         for pair in PUBLISHED:

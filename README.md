@@ -10,6 +10,8 @@ For current development, see [testing and release reproduction](docs/development
 
 This MIT-licensed Python implementation follows **Yang–Yu, Algorithm 7.6**, including all admissible integral overlattices and isometry deduplication preserving the square of the hyperplane class. The engine uses only the Python standard library. The explorer includes a standalone offline catalogue and loads the larger dataset on demand when hosted over HTTPS.
 
+A native **[HassettLattices.jl package](julia/HassettLattices/README.md)** now implements the same classification using Hecke and Nemo/FLINT, with typed results, exact certificates, primitive marking searches, K3 witnesses, lattice invariants, a CLI, and resumable catalogue generation. It has no Python runtime dependency. Both engines solve the saturation congruences before norm testing and group isometry comparisons by determinant; see [performance and validation](docs/performance.md).
+
 **Version 1.1.0** contains every unordered pair of distinct valid labels with **6 < d ≤ 500**: **165 labels, 13,530 intersections, and 1,636,925 component records**. This adds **13,464 pairs** to the original 66-pair catalogue. These are totals counted separately for each label pair; the same geometric locus can occur in several intersections. The complete finite range does not exhaust the infinitely many valid labels. See [the expanded catalogue guide](docs/expanded-catalogue.md) for results, verification scope, and reproduction commands.
 
 ## Interactive website
@@ -60,6 +62,25 @@ answer = intersection_components(
 ```
 
 Inputs must be distinct integers greater than six and congruent to zero or two modulo six. Their order is normalized according to the cases of Yang–Yu's algorithm; it need not be ascending. The original pair remains in `input_pair`. A self-intersection is deliberately rejected: as a set it is the divisor itself, not the rank-three problem treated here.
+
+## Julia API
+
+```julia
+using Pkg
+Pkg.add(url="https://github.com/causet1/hassett-lattice-explorer",
+        subdir="julia/HassettLattices", rev="main")
+using HassettLattices
+
+r = intersection_components(12, 20)
+sort(discriminant.(components(r)))  # [20, 32, 53, 68, 77, 80]
+verify_result(r; classification=true)
+primitive_markings(r[1], 500)
+write_result("12-20.json", r)
+```
+
+Julia 1.10+ and repository access are required. The package is not registered in General; pin a commit instead of `main` for reproducibility. See the [Julia guide](julia/HassettLattices/docs/src/index.md) and [backend reuse/conventions](julia/HassettLattices/CONTRIBUTING.md). Macaulay2 remains the next implementation target.
+
+The [Julia validation record](docs/julia-validation-2026-11-14.json) covers 1,545 package checks, documentation/doctests, agreement with Python and independent classification audits for all 66 embedded pairs, plus larger stress cases through saturation index 68. The optimized Python engine also reproduces every component and certificate in the full catalogue through 500; see [the performance report](docs/performance.md).
 
 ## What is computed
 
@@ -151,6 +172,9 @@ Primitivity of the first label forces an index-n overlattice to have basis `(h²
 | Path | Purpose |
 |---|---|
 | `hassett_lattices/` | Standard-library Python engine and CLI |
+| `julia/HassettLattices/` | Native Julia package, tests, examples, benchmarks and Documenter documentation |
+| `scripts/validate_julia.py` | Cross-language agreement, independent certificates and classification audit |
+| `scripts/benchmark_engine.py` | Reproducible Python performance comparison against a git revision |
 | `tests/test_lattices.py` | Published regressions, certificates, basis changes, CLI and limits |
 | `web/explorer.html` | Offline interactive explorer with embedded exact data |
 | `web/catalogue.json` | Reproducible complete catalogue through d = 42 |

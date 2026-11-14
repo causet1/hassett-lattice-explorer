@@ -83,9 +83,49 @@ $$E=\begin{pmatrix}1&0&-a\\0&1&-b\\0&0&n\end{pmatrix},\qquad E^THE=G_\tau,\qquad
 
 Include $n=1,a=b=0$, which recovers $M$ itself. Retain nonmaximal successful extensions as well: a proper equal-rank inclusion is not primitive and does not itself imply containment of the corresponding primitive lattice loci.
 
+### Solving the linear conditions before the norm test
+
+Both implementations now avoid scanning all $n^2$ residue pairs. Write
+$p_0=\varepsilon_1$, $q_0=\varepsilon_2$, and $s_1=(d_1+p_0)/3$.
+The linear conditions are
+
+$$3a+p_0b+q_0\equiv0\pmod n,\qquad p_0a+s_1b+\tau\equiv0\pmod n.$$
+
+Eliminating $a$ gives $d_1b\equiv p_0q_0-3\tau\pmod n$. For a congruence
+$cx\equiv r\pmod n$, let $g=\gcd(c,n)$. There are no solutions unless
+$g\mid r$; otherwise invert $c/g$ modulo $n/g$ and take all $g$ lifts.
+First solve for $b$, retain $\gcd(b,n)=1$, then solve
+$3a\equiv-p_0b-q_0\pmod n$. Recheck the second original equation, because
+elimination is only a necessary condition when $3\mid n$.
+
+Every original solution appears, and every retained lift satisfies both
+equations. At most $\gcd(d_1,n)\gcd(3,n)$ lifts reach this recheck; quadratic
+norm integrality and parity remain separate exact tests. Lexicographically
+sorting $(a,b)$ preserves the historical origin order and representative IDs.
+The diagnostic `overlattice_parameter_candidates` now counts linear solutions
+reaching the norm test; historical files counted the entire residue square.
+Work counters are implementation diagnostics, not mathematical invariants.
+
+Representatives are also grouped by determinant before isometry testing.
+The Julia package delegates short-vector enumeration, isometry and automorphism
+groups to Hecke, and exact integer algebra to Nemo/FLINT. Its marked-vector
+transport and row/column conventions are documented in
+[the backend notes](julia/HassettLattices/docs/src/algorithm.md).
+
 ## 3. Exact finite root and isometry tests
 
 ### Vectors of prescribed norm
+
+Both engines first apply an inexpensive exact root-exclusion certificate. Write
+the binary Schur form as $H(y,z)=Ay^2+2Byz+Cz^2$. Then
+
+$$H(y,z)\geq(\min(A,C)-|B|)(y^2+z^2).$$
+
+A square-two vector would satisfy $H(y,z)=6-(h^2,r)^2\leq6$.
+If $\min(A,C)-|B|>6$, no nonzero integral pair is possible; $y=z=0$
+would give $3x^2=2$, also impossible. The inequality is strictly greater than
+six: equality can contain roots. If this certificate does not apply, the full
+exact search proceeds (Hecke in Julia, the finite coordinate search in Python).
 
 For a positive-definite matrix $G$ and an integral vector satisfying $x^TGx=m$, Cauchy–Schwarz gives
 

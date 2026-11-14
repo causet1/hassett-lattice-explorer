@@ -1,0 +1,56 @@
+{
+  "julia": "1.10.12",
+  "platform": "macOS-10.15.8-x86_64-i386-64bit",
+  "Hecke": "0.41.1",
+  "Nemo": "0.57.2",
+  "BenchmarkTools": "1.8.0",
+  "seconds_per_case": 2,
+  "scope": "BenchmarkTools warm minimum; excludes package load and compilation. Do not treat these minima as medians.",
+  "measurements": [
+    {
+      "pair": [
+        8,
+        26
+      ],
+      "minimum_milliseconds": 1.205
+    },
+    {
+      "pair": [
+        8,
+        96
+      ],
+      "minimum_milliseconds": 2.146
+    },
+    {
+      "pair": [
+        446,
+        494
+      ],
+      "minimum_milliseconds": 57.363
+    },
+    {
+      "pair": [
+        456,
+        488
+      ],
+      "minimum_milliseconds": 32.174
+    },
+    {
+      "pair": [
+        498,
+        500
+      ],
+      "minimum_milliseconds": 11.421
+    }
+  ],
+  "source_sha256": {
+    "HassettLattices.jl": "c258c3b1ca706a5acf6b9e5b261029ff473abd483a89ed52446eb1f043d55912",
+    "arithmetic.jl": "30627b526f19f2e8f7892dff92dfc44f911a9c24052adc94bfae4f85516dcb2d",
+    "catalogue.jl": "8fa0a3ae320255cad62530cac1c237c5c5e1c4093e82a422344c64893750690a",
+    "certificates.jl": "7c91f681315fdaa23eaed16d5bbc29fa2ff312d6f6b64b6a78fa854dfd4a7559",
+    "cli.jl": "57c9b14687988224f381bf5f5686631ce6f0e2897b1f2dcf10dfa3b2c316ac51",
+    "intersection.jl": "aceeadce6f6554b24d4c2bd5ec82ffd9dcec50ed81a34c29de90e110f63e4d9d",
+    "lattices.jl": "aeb9c2a7bc180a42b2d6cc4db41d915f6c97cbd707f4686eac49d8ab6131f4e8",
+    "types.jl": "1e2cbe6b83e4f5aa978819ab2d37c755e414d644dcc8393313d89a6ed26f728a"
+  }
+}

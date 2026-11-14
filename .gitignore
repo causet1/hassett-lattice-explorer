@@ -10,3 +10,5 @@ web/data/
 *.out
 *.toc
 tmp/
+julia/**/Manifest.toml
+julia/**/docs/build/
