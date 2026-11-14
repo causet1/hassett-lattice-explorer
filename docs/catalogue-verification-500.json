@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "verifier": "scripts/verify_catalogue.py",
+  "passed": true,
+  "index_file": "/workspace/scratch/d34c508282be/hassett-expanded-500/catalogue-index.json",
+  "index_sha256": "6b9eef278531c5f12c725c3bc5b88504568ad5e0e25dcf03df4851a0da723a60",
+  "max_discriminant": 500,
+  "discriminants_checked": 165,
+  "expected_pair_count": 13530,
+  "pairs_checked": 13530,
+  "pair_coverage_complete": true,
+  "file_hashes_checked": 13530,
+  "gzip_files_checked": 13530,
+  "starting_parameter_intervals_checked": 13530,
+  "starting_lattices_checked": 1293470,
+  "independent_root_box_vectors_checked": 3077975,
+  "statistics": {
+    "total_components": 1636925,
+    "total_component_records": 1636925,
+    "total_marked_origins": 1698033,
+    "total_k3_admissible_components": 1371455,
+    "total_k3_nonadmissible_components": 265470,
+    "total_components_with_saturation": 363657,
+    "total_proper_overlattice_origins": 409887,
+    "total_duplicate_routes": 61108,
+    "max_saturation_index": 68,
+    "min_component_determinant": 16,
+    "max_component_determinant": 83000,
+    "total_bytes": 97024470,
+    "total_uncompressed_bytes": 1527319588
+  },
+  "published_fixtures": [
+    {
+      "pair": [
+        8,
+        14
+      ],
+      "component_count": 5,
+      "discriminants": [
+        21,
+        29,
+        32,
+        36,
+        37
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        8,
+        26
+      ],
+      "component_count": 8,
+      "discriminants": [
+        29,
+        36,
+        48,
+        53,
+        61,
+        64,
+        68,
+        69
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        8,
+        38
+      ],
+      "component_count": 10,
+      "discriminants": [
+        36,
+        45,
+        61,
+        68,
+        80,
+        85,
+        93,
+        96,
+        100,
+        101
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        12,
+        20
+      ],
+      "component_count": 6,
+      "discriminants": [
+        20,
+        32,
+        53,
+        68,
+        77,
+        80
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        20,
+        38
+      ],
+      "component_count": 17,
+      "discriminants": [
+        45,
+        77,
+        92,
+        120,
+        133,
+        157,
+        168,
+        188,
+        197,
+        213,
+        220,
+        232,
+        237,
+        245,
+        248,
+        252,
+        253
+      ],
+      "matched": true
+    }
+  ],
+  "elapsed_seconds": 162.343413,
+  "checks": [
+    "Exact coverage of every unordered distinct valid label pair through the bound.",
+    "No repeated label pairs, filenames, component ids, exact Gram matrices, or construction origins.",
+    "Every stored-file hash and byte count; decompression and uncompressed byte counts.",
+    "All pair files claim completed computations; no manifest failures or pending pairs.",
+    "The entire positive-definite starting-parameter interval and every root-free index-one origin.",
+    "All integral Gram, index, distinguished-class, primitive-label and basis-map certificates.",
+    "Independent exhaustive norm-two searches and exact whole-lattice K3 admissibility checks.",
+    "Per-pair statistics, aggregate statistics, and all included fixtures from the five-case published regression suite."
+  ],
+  "limitations": [
+    "Does not independently re-enumerate all admissible overlattices.",
+    "Does not independently prove pairwise nonisometry of distinct component representatives.",
+    "Classification completeness uses the documented exhaustive algorithm and cited geometric theorems; certificate checks alone do not prove it.",
+    "Hashes establish consistency with this index, not external authentication of the index.",
+    "Aggregate component totals count records per pair, not globally distinct geometric loci.",
+    "Counts are reduced irreducible components, not scheme multiplicities or rationality decisions."
+  ]
+}

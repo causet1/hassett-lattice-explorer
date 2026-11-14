@@ -1,0 +1,78 @@
+% Typography for the reproducible mathematics guide.
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{etoolbox}
+\definecolor{GuideInk}{HTML}{21343C}
+\definecolor{GuideAccent}{HTML}{176B61}
+\definecolor{GuideMuted}{HTML}{65747C}
+\definecolor{GuidePale}{HTML}{EDF3F1}
+
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{18pt}
+\setlength{\footskip}{28pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\footnotesize\textcolor{GuideMuted}{HASSETT LATTICE EXPLORER}}
+\fancyhead[R]{\sffamily\footnotesize\textcolor{GuideMuted}{MATHEMATICS GUIDE}}
+\fancyfoot[L]{\sffamily\scriptsize\textcolor{GuideMuted}{Exact arithmetic\quad /\quad November 2026}}
+\fancyfoot[R]{\sffamily\small\textcolor{GuideInk}{\thepage}}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\titleformat{\section}{\sffamily\Large\bfseries\color{GuideInk}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{GuideAccent}}{\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{GuideInk}}{\thesubsubsection}{0.7em}{}
+\titlespacing*{\section}{0pt}{21pt plus 3pt minus 2pt}{9pt}
+\titlespacing*{\subsection}{0pt}{15pt plus 2pt minus 2pt}{6pt}
+\pretocmd{\subsection}{\Needspace{8\baselineskip}}{}{}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.18}
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\predisplaypenalty=10000
+\raggedbottom
+\AtBeginDocument{\hypersetup{colorlinks=true,linkcolor=GuideAccent,urlcolor=GuideAccent,citecolor=GuideAccent}}
+
+\providecommand{\GuideSubtitle}{}
+\providecommand{\subtitle}[1]{\gdef\GuideSubtitle{#1}}
+\makeatletter
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \vspace*{10mm}
+  {\sffamily\bfseries\small\color{GuideAccent}RESEARCH SOFTWARE\quad /\quad MATHEMATICS GUIDE\par}
+  \vspace{10mm}
+  {\sffamily\bfseries\fontsize{32}{37}\selectfont\color{GuideInk}\@title\par}
+  \vspace{8mm}
+  {\sffamily\large\color{GuideMuted}\GuideSubtitle\par}
+  \vspace{16mm}
+  {\color{GuideAccent}\hrule height 1.1pt}
+  \vspace{12mm}
+  {\large
+  \[
+  G_t=\begin{pmatrix}3&\epsilon_1&\epsilon_2\\
+  \epsilon_1&a_1&t\\\epsilon_2&t&a_2\end{pmatrix},
+  \qquad
+  \det G_t=\frac{d_1d_2-(3t-\epsilon_1\epsilon_2)^2}{3}.
+  \]
+  }
+  \vspace{10mm}
+  \begin{minipage}{0.92\textwidth}
+  {\large\color{GuideInk}Two divisor labels determine a finite family of rank-three lattices. Saturation and integral isometry turn that family into the irreducible components.\par}
+  \vspace{7mm}
+  {\sffamily\small\color{GuideMuted}Exact computation\quad\textbullet\quad Published validation\quad\textbullet\quad K3 associations\par}
+  \end{minipage}
+  \vfill
+  {\sffamily\bfseries\color{GuideInk}\@author\par}
+  \vspace{2mm}
+  {\sffamily\small\color{GuideMuted}\@date\par}
+  \end{titlepage}
+  \pagenumbering{roman}
+}
+\makeatother
+\apptocmd{\tableofcontents}{\clearpage\pagenumbering{arabic}}{}{}

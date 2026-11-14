@@ -1,0 +1,257 @@
+{
+  "release": "1.1.0",
+  "reference_date": "2026-11-13",
+  "passed": true,
+  "runtime": {
+    "python": "3.12.14",
+    "implementation": "CPython"
+  },
+  "python_tests": {
+    "passed": true,
+    "test_methods": 19,
+    "failures": 0,
+    "errors": 0,
+    "log": "test_distinct_routes_are_merged (test_lattices.CertificateTests.test_distinct_routes_are_merged) ... ok\ntest_equal_determinants_are_not_identified (test_lattices.CertificateTests.test_equal_determinants_are_not_identified) ... ok\ntest_every_origin_in_published_cases (test_lattices.CertificateTests.test_every_origin_in_published_cases) ... ok\ntest_rejected_roots_have_actual_square_two (test_lattices.CertificateTests.test_rejected_roots_have_actual_square_two) ... ok\ntest_swapping_divisors (test_lattices.CertificateTests.test_swapping_divisors) ... ok\ntest_cli_success_and_failure (test_lattices.InputAndCliTests.test_cli_success_and_failure) ... ok\ntest_cli_writes_an_importable_file (test_lattices.InputAndCliTests.test_cli_writes_an_importable_file) ... ok\ntest_invalid_inputs (test_lattices.InputAndCliTests.test_invalid_inputs) ... ok\ntest_json_roundtrip (test_lattices.InputAndCliTests.test_json_roundtrip) ... ok\ntest_work_limit_never_returns_partial_success (test_lattices.InputAndCliTests.test_work_limit_never_returns_partial_success) ... ok\ntest_all_components_with_an_admissible_input (test_lattices.K3Tests.test_all_components_with_an_admissible_input) ... ok\ntest_component_test_uses_the_lattice_not_its_determinant (test_lattices.K3Tests.test_component_test_uses_the_lattice_not_its_determinant) ... ok\ntest_label_arithmetic (test_lattices.K3Tests.test_label_arithmetic) ... ok\ntest_sixty_basis_changes (test_lattices.K3Tests.test_sixty_basis_changes) ... ok\ntest_split_congruence_is_required (test_lattices.K3Tests.test_split_congruence_is_required) ... ok\ntest_abbva_geometric_basis (test_lattices.PublishedCases.test_abbva_geometric_basis) ... ok\ntest_all_five_published_counts_and_discriminants (test_lattices.PublishedCases.test_all_five_published_counts_and_discriminants) ... ok\ntest_awada_geometric_basis (test_lattices.PublishedCases.test_awada_geometric_basis) ... ok\ntest_yang_yu_index_two_component (test_lattices.PublishedCases.test_yang_yu_index_two_component) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.161s\n\nOK\n"
+  },
+  "published_fixtures": [
+    {
+      "pair": [
+        8,
+        14
+      ],
+      "published_count": 5,
+      "computed_count": 5,
+      "published_discriminants": [
+        21,
+        29,
+        32,
+        36,
+        37
+      ],
+      "computed_discriminants": [
+        21,
+        29,
+        32,
+        36,
+        37
+      ],
+      "matched": true,
+      "reference": "Auel et al., Theorem 4",
+      "source": "https://arxiv.org/abs/1205.0237v4"
+    },
+    {
+      "pair": [
+        8,
+        26
+      ],
+      "published_count": 8,
+      "computed_count": 8,
+      "published_discriminants": [
+        29,
+        36,
+        48,
+        53,
+        61,
+        64,
+        68,
+        69
+      ],
+      "computed_discriminants": [
+        29,
+        36,
+        48,
+        53,
+        61,
+        64,
+        68,
+        69
+      ],
+      "matched": true,
+      "reference": "Awada, Proposition 3.2",
+      "source": "https://arxiv.org/abs/1910.10182v2"
+    },
+    {
+      "pair": [
+        8,
+        38
+      ],
+      "published_count": 10,
+      "computed_count": 10,
+      "published_discriminants": [
+        36,
+        45,
+        61,
+        68,
+        80,
+        85,
+        93,
+        96,
+        100,
+        101
+      ],
+      "computed_discriminants": [
+        36,
+        45,
+        61,
+        68,
+        80,
+        85,
+        93,
+        96,
+        100,
+        101
+      ],
+      "matched": true,
+      "reference": "Awada, Theorem 1.1(2)",
+      "source": "https://arxiv.org/abs/1910.10182v2"
+    },
+    {
+      "pair": [
+        12,
+        20
+      ],
+      "published_count": 6,
+      "computed_count": 6,
+      "published_discriminants": [
+        20,
+        32,
+        53,
+        68,
+        77,
+        80
+      ],
+      "computed_discriminants": [
+        20,
+        32,
+        53,
+        68,
+        77,
+        80
+      ],
+      "matched": true,
+      "reference": "Yang–Yu, Theorem 7.11",
+      "source": "https://arxiv.org/abs/2103.09132"
+    },
+    {
+      "pair": [
+        20,
+        38
+      ],
+      "published_count": 17,
+      "computed_count": 17,
+      "published_discriminants": [
+        45,
+        77,
+        92,
+        120,
+        133,
+        157,
+        168,
+        188,
+        197,
+        213,
+        220,
+        232,
+        237,
+        245,
+        248,
+        252,
+        253
+      ],
+      "computed_discriminants": [
+        45,
+        77,
+        92,
+        120,
+        133,
+        157,
+        168,
+        188,
+        197,
+        213,
+        220,
+        232,
+        237,
+        245,
+        248,
+        252,
+        253
+      ],
+      "matched": true,
+      "reference": "Yang–Yu, Theorem 7.9",
+      "source": "https://arxiv.org/abs/2103.09132"
+    }
+  ],
+  "catalogue": {
+    "divisors": 12,
+    "pairs": 66,
+    "component_records": 628,
+    "construction_origins": 640
+  },
+  "independent_verifier": {
+    "passed": true,
+    "log": "PASS /workspace/scratch/d34c508282be/hassett-lattice-explorer/web/catalogue.json: 66 pair(s), 628 component certificates, 640 origins\nVerified 66 pair(s), 628 component certificates, 640 origins; 986 independent root-box vectors checked.\nCertificate validation passed. This does not independently establish enumeration completeness or pairwise nonisometry.\n",
+    "scope": "Integral certificate validation, using separate linear algebra and root enumeration. Completeness follows the documented algorithm and cited theorem, not certificates alone."
+  },
+  "web_interaction_tests": {
+    "passed": true,
+    "checks": 208,
+    "catalogue_pairs": 66,
+    "real_hosted_data": {
+      "max_discriminant": 500,
+      "pair_count": 13530,
+      "complete": true,
+      "verified_shards": [
+        "8-44",
+        "152-318",
+        "498-500"
+      ]
+    },
+    "method": "Actual embedded JavaScript executed in Node VM with a DOM test double; focus, disabled controls and async event routes modeled. Native Web Streams, gzip and WebCrypto execute against mocked same-origin HTTP responses. No browser layout, native clipboard, or actual network/download verification.",
+    "componentCounts": {
+      "8,14": 5,
+      "8,26": 8,
+      "8,38": 10,
+      "12,20": 6,
+      "20,38": 17
+    },
+    "features": [
+      "automatic startup",
+      "static preview fallback",
+      "startup error and import recovery",
+      "form submission",
+      "preset clicks",
+      "component and tau focus preservation",
+      "matrix/table controls",
+      "keyboard network selection",
+      "JSON import success/error/size limit",
+      "export JSON bytes",
+      "clipboard success/denial/manual-copy fallback",
+      "published validation metadata",
+      "missing-pair state",
+      "incomplete-result state",
+      "K3 arithmetic",
+      "HTML escaping",
+      "runtime error diagnostics",
+      "HTTPS index and per-pair lazy loading",
+      "complete and partial range metadata",
+      "selection-before-index race",
+      "rapid-selection cancellation and stale-response protection",
+      "real gzip decompression and SHA-256 validation",
+      "verified CDN decompression fallback",
+      "safe paths and compressed/decompressed size caps",
+      "network retry states",
+      "offline no-network behavior"
+    ]
+  },
+  "visual_browser_review": {
+    "recorded_by_this_script": false,
+    "reason": "This automated script executes a DOM test double. An actual HTTPS browser review is separate."
+  },
+  "limitations": [
+    "No scheme-theoretic multiplicities.",
+    "No automatic rationality decision.",
+    "This script does not verify live browser layout, native clipboard, or actual network downloads.",
+    "This is regression-tested research software, not proof-assistant-verified code."
+  ]
+}
