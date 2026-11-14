@@ -29,6 +29,20 @@ to `build/validation/web_validation.json`.
 
 ## Retrieve and verify the published catalogue
 
+On 2026-11-14, source commit `aaedcfaf6273fd4d9f0a4e02b7312bf8dd50c771`
+passed 28 Python tests and 208 UI assertions against the downloaded dataset.
+The independent classification audit passed for all 66 embedded pairs and 640
+origins. GitHub CI also passed on Python 3.10 and 3.14 with Node 24; the local
+run used Python 3.12 and Node 22. Tests passed from the extracted Python source
+distribution, and the installed wheel CLI worked outside the checkout.
+
+The [fresh full-catalogue report](catalogue-verification-500-2026-11-14.json)
+records successful verification of all 13,530 pair files, 1,636,925 component
+certificates, 1,698,033 origins, and 3,077,975 independent root-box vectors.
+Its pinned index digest matches the original release. This full-data check is
+certificate and pair-coverage verification; the independent classification
+audit above covers the embedded range only. The original reports remain intact.
+
 ```sh
 python scripts/download_catalogue.py --output ../hassett-expanded-500
 python scripts/verify_catalogue.py ../hassett-expanded-500/catalogue-index.json \
