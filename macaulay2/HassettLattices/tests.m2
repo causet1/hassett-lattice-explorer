@@ -89,6 +89,10 @@ for y from -5 to 5 do for z from -4 to 4 do (
 assert(apply(marks,m->{m#"discriminant",m#"vector"#1,m#"vector"#2}) == sort expected)
 assert((k3Witness(g,100))#"admissible")
 assert(k3Witness(g,7) === null)
+cert = k3Certificate g;
+assert(cert#"association"#"admissible" and cert#"witness"#"discriminant" <= cert#"search_bound")
+assert(not (k3Certificate matrix {{3,0,0},{0,4,0},{0,0,6}})#"association"#"admissible")
+assert((k3Certificate matrix {{3,0,0},{0,4,0},{0,0,10}})#"witness"#"discriminant" == 42)
 assert((latticeK3Association matrix {{3,0,0},{0,4,0},{0,0,4}})#"admissible" == false)
 ///
 

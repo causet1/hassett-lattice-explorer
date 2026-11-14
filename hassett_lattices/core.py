@@ -308,6 +308,85 @@ def lattice_k3_association(g, limits=Limits()):
     return result
 
 
+def _markings(g, bound, admissible_only, budget):
+    a, b, c = _schur(g)
+    delta = a*c-b*b
+    found = []
+    for z in range(-isqrt(bound*a//delta), isqrt(bound*a//delta)+1):
+        budget.tick()
+        radius = isqrt(a*bound-delta*z*z)
+        low, high = -((b*z+radius)//a), (-b*z+radius)//a
+        for y in range(low, high+1):
+            budget.tick()
+            if gcd(y, z) != 1 or y < 0 or (y == 0 and z <= 0):
+                continue
+            d = a*y*y+2*b*y*z+c*z*z
+            if not valid_discriminant(d):
+                continue
+            admissible = not _arithmetic_obstructions(d, budget)
+            if admissible_only and not admissible:
+                continue
+            v = [0, y, z]
+            pairing = g[0][1]*y+g[0][2]*z
+            found.append({"discriminant": d, "vector": v,
+                          "gram": [[3, pairing], [pairing, _bilinear(g, v, v)]],
+                          "admissible": admissible})
+    return sorted(found, key=lambda m: (m["discriminant"], m["vector"]))
+
+
+def primitive_markings(g, bound, *, admissible_only=False, limits=Limits()):
+    """All primitive rank-two labels of discriminant <= bound through h.
+
+    Vectors (0,y,z) are representatives modulo addition of h and sign, not
+    modulo the automorphism group. A finite search is not a nonexistence proof
+    beyond its bound. Uses the exact binary Schur ellipse.
+    """
+    _validate_gram(g)
+    if any((g[i][i]-g[0][i]) % 2 for i in range(3)):
+        raise ValueError("The first vector must be distinguished (h-perp even)")
+    if not isinstance(bound, int) or isinstance(bound, bool) or bound < 0:
+        raise ValueError("bound must be a nonnegative integer")
+    if not isinstance(admissible_only, bool):
+        raise ValueError("admissible_only must be Boolean")
+    budget = _Budget(limits)
+    result = _markings(g, bound, admissible_only, budget)
+    budget.check_time()
+    return result
+
+
+def k3_witness(g, bound=10000, *, limits=Limits()):
+    """An admissible marking within bound, or None (only a bounded search)."""
+    found = primitive_markings(g, bound, admissible_only=True, limits=limits)
+    return found[0] if found else None
+
+
+def k3_certificate(g, *, limits=Limits()):
+    """Certify the K3 decision by a primitive marking or arithmetic obstruction.
+
+    A positive criterion triggers exhaustive searches with doubling bounds,
+    sharing one work/time budget. Existence follows from Yang--Yu 8.8--8.9;
+    exhaustion of a resource limit raises ResourceLimitError, never a negative
+    answer. Negative decisions need no vector search. See docs/math-audit.md.
+    This is an untwisted K3 certificate, not a rationality decision.
+    """
+    _validate_gram(g)
+    if any((g[i][i]-g[0][i]) % 2 for i in range(3)):
+        raise ValueError("The first vector must be distinguished (h-perp even)")
+    budget = _Budget(limits)
+    association = _k3_association(g, budget)
+    bound, witness = 0, None
+    if association["admissible"]:
+        bound = 16
+        while witness is None:
+            found = _markings(g, bound, True, budget)
+            if found:
+                witness = found[0]
+            else:
+                bound *= 2
+    budget.check_time()
+    return {"association": association, "witness": witness, "search_bound": bound}
+
+
 def _indices(det, budget):
     values = [1]
     for p, e in _factor(det, budget):

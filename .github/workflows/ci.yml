@@ -28,6 +28,10 @@ jobs:
         run: python scripts/validate_release.py
       - name: Independently audit embedded classification
         run: python scripts/audit_classification.py web/catalogue.json --report build/validation/classification-audit.json
+      - name: General Hermite audit and mathematical benchmark dossiers
+        run: |
+          python scripts/audit_hnf.py web/catalogue.json --report build/validation/hnf-audit.json
+          python scripts/mathematical_report.py --check
       - name: Build Python distributions and verify installed CLI
         run: |
           python -m pip install build

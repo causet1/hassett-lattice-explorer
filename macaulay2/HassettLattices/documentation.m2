@@ -215,6 +215,8 @@ doc ///
     (primitiveHassettMarkings, Thing, ZZ)
     k3Witness
     (k3Witness, Thing, ZZ)
+    k3Certificate
+    (k3Certificate, Thing)
     AdmissibleOnly
   Headline
     whole-lattice K3 decisions and bounded primitive markings
@@ -232,6 +234,11 @@ doc ///
       and admissibility. AdmissibleOnly => true filters this list.
       k3Witness(l,bound) returns its first admissible marking or null.
       A null bounded witness does not negate the whole-lattice criterion.
+      k3Certificate(l) returns association, witness, and search_bound.
+      A positive result includes an explicit primitive admissible marking;
+      a negative result has null witness and exact arithmetic obstructions.
+      Positive searches double their bound with one shared work/time budget.
+      Exhausting that budget raises HassettResourceLimitError.
     Example
       l = hassettLattice hassettBaseGram(8,14,0);
       (latticeK3Association l)#"admissible"
@@ -369,7 +376,7 @@ doc ///
 -- nodes explicitly, sharing the main option explanations above.
 scan({admissibleHassettDiscriminant, saturationIndices, saturationResidues,
     hassettIntersection, normTwoVector, hFixedIsometry, latticeK3Association,
-    primitiveHassettMarkings, k3Witness, hassettInvariants, verifyHassettResult,
+    primitiveHassettMarkings, k3Witness, k3Certificate, hassettInvariants, verifyHassettResult,
     readHassettResult, buildHassettCatalogue}, f -> (
     document {Key => [f,MaxWork], Headline => "limit application work",
         "Maximum application iterations/backend calls, or null. See ", TO MaxWork, "."};

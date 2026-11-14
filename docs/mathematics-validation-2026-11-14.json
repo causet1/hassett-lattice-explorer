@@ -1,0 +1,774 @@
+{
+  "validated_at": "2026-11-14T21:37:47.731459+00:00",
+  "passed": true,
+  "source": {
+    "commit": "98505c76c6117596255003473c54fa269d43c850",
+    "working_tree_dirty": true,
+    "sha256": {
+      ".github/workflows/ci.yml": "87ef2f4b0114a870f19ddf7846dca873017c72983784a34c03e3624bfce00a55",
+      ".github/workflows/expanded-catalogue.yml": "1c4260652230a17713f6f3bb74d137416252482908c158b349ceb8994bdfb125",
+      ".github/workflows/julia.yml": "d58abe0f87c2b1437063dd5ceb483377b690e9c81958a223505440114c4b5ed8",
+      ".github/workflows/macaulay2.yml": "7db222a0dc7acd0acf402a03383f332ca8f2965c6ae6843ffe16d31810e193d1",
+      "MANIFEST.in": "0194790dabc52560286c1516f1d7113f35d72a2bc96693e6a4cb2db794df1b3d",
+      "hassett_lattices/__init__.py": "704cc4c565e4a1b01c0991b6be75bd69ab1c593b96e9cd3e985d51425845ffd9",
+      "hassett_lattices/__main__.py": "9c70dfb3c55ee007b154f2496f5d6e96c1bd6acb1871f2abb6e20e9b4800b65e",
+      "hassett_lattices/core.py": "9d69c40372cbaa671e3eadf6f451be8f6567b89b922d6886bea6cf9e8217ebe6",
+      "julia/HassettLattices/.JuliaFormatter.toml": "64c625527df96cf2c0fa03526b2d35acbc591a19ade3cb0b10fbebb2a39663ff",
+      "julia/HassettLattices/CONTRIBUTING.md": "80b7b234710abc70defe1165e720091e82a3e56047c79caa75f9c3d1aa86f55c",
+      "julia/HassettLattices/Project.toml": "38c8d379508fbfc30a7557a6706ff61f7968d27a89f09ef003dbea86bcb3371e",
+      "julia/HassettLattices/README.md": "e53969da6538c54b009798c54ab3ef92652c0a49c677f3448f8a10815ba13c14",
+      "julia/HassettLattices/benchmark/benchmarks.jl": "82d7b4e7b5d03a053b7d790ac0df8e36959fcf61c24838751f94c1e6f910bcfd",
+      "julia/HassettLattices/bin/hassett.jl": "68ef80050f9768f13187b14e2f41677a330c3e2a459381646e3bd60e61daae1d",
+      "julia/HassettLattices/dev/Project.toml": "b1188a2f8309062c6b2adac106775bb0d1052519ce6776952649b1faa443a98a",
+      "julia/HassettLattices/dev/format.jl": "4da31ad75f59a62c87d3f18f14a842380bb045fb237336c461ef395301b47cae",
+      "julia/HassettLattices/docs/Project.toml": "fef186fc1f57118f44ce7b6933740afa1d0da3f0ab0032465b2fcb82464dc786",
+      "julia/HassettLattices/docs/make.jl": "2d8cd771daaa8f3d71694e406cd41638e6f3051b0b33ee0b18948d599a397130",
+      "julia/HassettLattices/docs/src/algorithm.md": "96ca9c8ead588d7d7d069aa1fc24fc06af30c5cfa49c5fabf0d0324b326e13b0",
+      "julia/HassettLattices/docs/src/api.md": "8ba895bd94c8219da57186046529e90ff69b49eeb1627ff57542982d75189788",
+      "julia/HassettLattices/docs/src/index.md": "702f773d23a11d76477fcb1ea38c5cd5b50e423f3a3e32286ba5be42b2d7b516",
+      "julia/HassettLattices/examples/catalogue.jl": "2583fa353eca287c0300140bb6cb75ce9c6d7fbb71749cb10350e4e046a8ac84",
+      "julia/HassettLattices/examples/intersection.jl": "f8cce7f4042c1689ca7ca38e68e5d0ec90091bb6c3845feee985de2f7accfe89",
+      "julia/HassettLattices/src/HassettLattices.jl": "4950ac30ed9429753ba1422951a52ba6d44f0895a877703f831fe2dd49654edf",
+      "julia/HassettLattices/src/arithmetic.jl": "30627b526f19f2e8f7892dff92dfc44f911a9c24052adc94bfae4f85516dcb2d",
+      "julia/HassettLattices/src/catalogue.jl": "8fa0a3ae320255cad62530cac1c237c5c5e1c4093e82a422344c64893750690a",
+      "julia/HassettLattices/src/certificates.jl": "7c91f681315fdaa23eaed16d5bbc29fa2ff312d6f6b64b6a78fa854dfd4a7559",
+      "julia/HassettLattices/src/cli.jl": "57c9b14687988224f381bf5f5686631ce6f0e2897b1f2dcf10dfa3b2c316ac51",
+      "julia/HassettLattices/src/intersection.jl": "aceeadce6f6554b24d4c2bd5ec82ffd9dcec50ed81a34c29de90e110f63e4d9d",
+      "julia/HassettLattices/src/lattices.jl": "918ca64ded27f95ae1b38e406270a4b939f3f3215c39decaebc6b27c73e72eec",
+      "julia/HassettLattices/src/types.jl": "1e2cbe6b83e4f5aa978819ab2d37c755e414d644dcc8393313d89a6ed26f728a",
+      "julia/HassettLattices/test/export_k3_certificates.jl": "bfbcf27778f0e7803a70926a4122c549594a292f0991b669d82cfac160d5a866",
+      "julia/HassettLattices/test/runtests.jl": "3e1d13c11b6f6877f6cd9f071467a992d527a6f48c15803ab34d3cb4b7ba70d2",
+      "macaulay2/CONTRIBUTING.md": "186262b3bf0ed3e9395647f3d625fad563807eee2ef0b4b7a3b13fe0dda45517",
+      "macaulay2/HassettLattices/arithmetic.m2": "2b73c973d6f762b9b5db96514f1c191f60ab15cd42e2e86428ce033b89663dfb",
+      "macaulay2/HassettLattices/catalogue.m2": "069e80c4874f9f8b2ac3d28a4d174af8ab96a3332a604c9fc5c92871445fe346",
+      "macaulay2/HassettLattices/certificates.m2": "9794a8804c737aea26cf3e8b436b9304a9674d727eecd016367715a5a0a0d0e9",
+      "macaulay2/HassettLattices/cli.m2": "be3a425ec059ee8219494e2f40ec7ee86070525811816dff0526e87e28650baf",
+      "macaulay2/HassettLattices/documentation.m2": "44b9ce2615bfed080398725703173622f603c542fd71fb76f4300c42089d6293",
+      "macaulay2/HassettLattices/intersection.m2": "24276debfe077a4a08797eacd17aac1a8dee2582a503f808ca87c3c11617603b",
+      "macaulay2/HassettLattices/lattices.m2": "f6a446a7231d0de08c820b029b41ceb2b5cfa5d0ecd7f8302d19c64de1dae7e0",
+      "macaulay2/HassettLattices/tests.m2": "cd3c6dc7c0aaccf2a86318efef4461cdcb6ccf3dfcd6ab216ecdbc20694e980b",
+      "macaulay2/HassettLattices.m2": "11d6f84ec1313f7feccddcd1958a5574c18f364965bea1c176b7d026d900a906",
+      "macaulay2/README.md": "f603ddd26427e75615154a2eb3e1ceb2fe0b84969248be20b1547a7bf8a7c90f",
+      "macaulay2/benchmark-hassett.m2": "c5b49bebd8fad17fde416e381057192d672ecd6d5878f115dfb58513acd0fdb8",
+      "macaulay2/build-docs.m2": "8582a6c5e56b0af037b51091c5a400ef9500b9a0b8aa12f4a3760f63f282d719",
+      "macaulay2/export-k3-certificates.m2": "c72750a9e7d2adc03c40e5a0b650447013608c85d9a547bfd006ee3fae83f295",
+      "macaulay2/test.m2": "133e054fd44cb044ee0b7172899487f6b24740eed4bcbbd8863371858991c4cd",
+      "macaulay2/validate.m2": "b95c70cffee3fcf1b878dcf952305ca6f39c0bb07f9b12eb40e084b49fc64b14",
+      "pyproject.toml": "eab127cfa959341e973821cda1c38b3b7b9d4bc4c127d20708973db1a37b349e",
+      "scripts/audit_classification.py": "59a1da98727654279bbc08a93be23f6c978106f3227feffeb6485259aaaf3790",
+      "scripts/audit_hnf.py": "2786172b955dd7b00dd842073d34dd9f2d575de83c72224b06fed72b9e4a980f",
+      "scripts/benchmark_engine.py": "3e8a518000c6bee83c44e99ad04df897a6a28f842e03fbb52a57f99250d555ab",
+      "scripts/build_catalogue.py": "581b5fe6206ee7eaa115eb21ff258b26d2a8e3bd6bc7b34c97c7cf868e623da0",
+      "scripts/build_guide.py": "40dbeadd8152e073dcce984c42a06fa19b576b0282f4b7abdd29b4183e060fa2",
+      "scripts/build_hosted_site.py": "1316f2a60b683c30269e9aaa3f377c25e3e055b8fb3da91e26c8f105b1598894",
+      "scripts/compare_engine_catalogue.py": "43db9b915911c1cf77ca7e9cbab237ab3ba78bd9cea5e664244b834405c03398",
+      "scripts/download_catalogue.py": "12d9872835f87500d84b4c82a904bb7ad045011783f7140d8695dd0689b92bde",
+      "scripts/expand_catalogue.py": "5136621dca13cdca55253e3edb7bb961dcd10b1bdaff5ea23a392e6a4148db60",
+      "scripts/mathematical_report.py": "8319daaf27887d54bb309b3d303bf8a173ec1718a5fe6a4be00d3198a524b3d4",
+      "scripts/package_catalogue.py": "eca62384eb6536eb6d1d6fcb34d70c99eafc115339ddadaf3a6fd96b84705a5d",
+      "scripts/package_release.py": "68e317a07127100b9f8ddc51b14f9b6d6e03fe03d2f4af2f2993dbc22dbab0e3",
+      "scripts/plot_catalogue.py": "187b64919191ed5202c502e46caab3bb516f46906df4723e7cd7515f54fef856",
+      "scripts/release_support.py": "da26936937f3f3182b41f84b8f75189f2ce91e2cb1f693802b6495ebaeb01f00",
+      "scripts/test_macaulay2_cli.py": "530513c9f301cd58de0c06a7c43a1ee67e01bc8615b4b31f12975dd2e8bf2f65",
+      "scripts/validate_julia.py": "92d6052e5936e2795c3d628d9d7c78280adee0a780592c84c1210cfd943ec84c",
+      "scripts/validate_macaulay2.py": "e46fce25f0d19c7be255d0a06c09e84d7284803a929cb487f36d8eaa2721ced4",
+      "scripts/validate_release.py": "34841326e5e2696189863458177196492a24287707fb9ebb183ed5f751c12317",
+      "scripts/verify_catalogue.py": "01e75ffefb662d93a5a68625aa7af08e1bd6929c035016084790b96d238eeed4",
+      "scripts/verify_certificates.py": "7ef7300c3bf5b2745ee5c3a3e9b1faf244c3aa9166fdaa02d9f58da09c20aa32",
+      "scripts/verify_k3_certificates.py": "5051dd412244b8938cca2bb08d9eb74a8266a605511714011971ad63c0d1b4b9",
+      "tests/test_classification_audit.py": "c29a4050d76aae25dbaf295b008955a1bb2c0e3c065df4722b4175bac63717e7",
+      "tests/test_explorer.cjs": "19e5b7e8a9ad72cdc355ae16673e93dc072d7105b96d23d6be0fd7447623f340",
+      "tests/test_lattices.py": "a6c45c2de53ab2bb03ecdc3e2576eceb0cf1e773e13cf656df088a51a0a4f5c2",
+      "tests/test_mathematics.py": "5a5326973eb82ad889d20d2607ebb523e28fd0b334c167c5b8217d1d0ffc5791",
+      "tests/test_release_pipeline.py": "24266227b43241e7b03fda697f3429ff35c5a1631df4bc4e6af95a4f4e9b0907",
+      "web/catalogue.json": "015ee2356dd93b85a98e791b636be4e8412c3fa774af8bd7c198533b0b6bc188",
+      "web/explorer.html": "b1456bbde2ef0426df8cd384c5719e66f68297787863228809ab4b4a84a1d9a0"
+    }
+  },
+  "proof_review": {
+    "document": "docs/math-audit.md",
+    "kind": "AI-assisted primary-source and mathematical argument audit",
+    "external_peer_review": false,
+    "formal_proof_assistant_verification": false
+  },
+  "hermite_audit": {
+    "passed": true,
+    "input_sha256": "015ee2356dd93b85a98e791b636be4e8412c3fa774af8bd7c198533b0b6bc188",
+    "pairs": [
+      {
+        "pair": [
+          8,
+          12
+        ],
+        "components": 3,
+        "origins": 3,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          14
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          18
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          20
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          24
+        ],
+        "components": 5,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          26
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          30
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          32
+        ],
+        "components": 10,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          36
+        ],
+        "components": 6,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          38
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          42
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          12
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          18
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          12
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          24
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          12
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          30
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          12
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          36
+        ],
+        "components": 7,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          12
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          42
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          18
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          20
+        ],
+        "components": 9,
+        "origins": 9,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          24
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          26
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          30
+        ],
+        "components": 7,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          32
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          36
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          38
+        ],
+        "components": 15,
+        "origins": 16,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          42
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          18
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          24
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          18
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          18
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          36
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          18
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          42
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          24
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          26
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          32
+        ],
+        "components": 18,
+        "origins": 18,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          36
+        ],
+        "components": 10,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          38
+        ],
+        "components": 17,
+        "origins": 17,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          42
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          24
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          24,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          24
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 1
+      },
+      {
+        "pair": [
+          24,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          24
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          24,
+          42
+        ],
+        "components": 11,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          30
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          32
+        ],
+        "components": 18,
+        "origins": 18,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          38
+        ],
+        "components": 23,
+        "origins": 23,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          42
+        ],
+        "components": 12,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          30
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          30,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          30
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          30,
+          42
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          36
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          38
+        ],
+        "components": 22,
+        "origins": 22,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          42
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          36
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          36,
+          42
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          42
+        ],
+        "components": 16,
+        "origins": 16,
+        "equal_determinant_comparisons": 0
+      }
+    ],
+    "work_units": 42623,
+    "scope": "All row Hermite inclusion forms; independent root and marked-isometry checks. Finite inputs only; geometric theorems are reviewed in docs/math-audit.md."
+  },
+  "benchmark_dossiers": {
+    "components": 19,
+    "pairs": [
+      [
+        8,
+        14
+      ],
+      [
+        8,
+        26
+      ],
+      [
+        12,
+        20
+      ]
+    ],
+    "rational_by_cited_theorems": 15,
+    "rationality_not_decided_here": 4,
+    "basis_and_inclusion_certificates_checked": true
+  },
+  "k3_certificates": {
+    "python": {
+      "lattices": 628,
+      "positive_witnesses": 541,
+      "negative_obstructions": 87,
+      "sha256": "8e3f3d225f749b17f31bae1570bcf439756c8c82005993e32e6b1ecaa20d7a09",
+      "independent_verifier": "scripts/verify_k3_certificates.py",
+      "passed": true
+    },
+    "julia": {
+      "lattices": 628,
+      "positive_witnesses": 541,
+      "negative_obstructions": 87,
+      "sha256": "b5579ef219f836e8127b78b89935c65cf7e90a043d6da1bfa036f6a3ba783269",
+      "independent_verifier": "scripts/verify_k3_certificates.py",
+      "passed": true
+    },
+    "macaulay2": {
+      "lattices": 628,
+      "positive_witnesses": 541,
+      "negative_obstructions": 87,
+      "sha256": "2a8e5240bc130aefaf1812fcc2b5667d5bf7b0acecbdf465b91ee76f9aad6984",
+      "independent_verifier": "scripts/verify_k3_certificates.py",
+      "passed": true
+    }
+  },
+  "package_checks": {
+    "python_tests": 36,
+    "julia_checks": 1552,
+    "macaulay2_test_groups": 5,
+    "ui_assertions": 208,
+    "published_fixtures": 5,
+    "julia_documenter_and_doctests": "passed",
+    "macaulay2_install_and_documentation_examples": "passed"
+  },
+  "guide": {
+    "pages": 13,
+    "typesetting_warnings": 0,
+    "rationality_pages_visually_reviewed": [
+      10,
+      11
+    ]
+  },
+  "mathematical_artifact_sha256": {
+    "docs/math-audit.md": "e0d95e8c03bacdf4c1edea838b555713656bc1541c621e7033b9bc12e8f21bd7",
+    "docs/benchmark-components.md": "35487675a4e00ab1a630398f6e405e1f524f4aa2a40505fb72a4373155341a67",
+    "docs/benchmark-components.json": "9f352fbacda24f994c0534ecafb6c4cf4f1dc85a0b8cf6ca19e79163aeef220f",
+    "docs/mathematics.md": "c022ffb781e38be33073df8d2708d6cd22f052269fc6865b6feaed5d7b21893d",
+    "docs/mathematics.tex": "108632ef41e9727fdddd2f886a7a6eae5c9141027fb4a4e4d27bf9d5e65b8360",
+    "docs/mathematics.pdf": "c3b0e8f619d7588f91992c5cf8fb60a58d6280fabbd6a54d31ca70933a5d13cb",
+    "docs/references.bib": "433b27cca07377c6553462188290af56b32b2c61598329348369611b30e0c7e1"
+  },
+  "limits": [
+    "Finite Hermite audit covers 66 pairs through 42, not the full range through 500.",
+    "K3 obstruction is not an irrationality certificate.",
+    "Geometric theorems are cited and reviewed, not formally verified.",
+    "Existing web-hosted download assets are not redeployed by a Git push."
+  ]
+}

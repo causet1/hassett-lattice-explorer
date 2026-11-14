@@ -1,5 +1,12 @@
 # Development checks and reproducible releases
 
+The [mathematical completion checks](math-audit.md#reproduce-the-completion-checks)
+add general Hermite inclusion enumeration, constructive K3 certificates, and
+reproduction of the nineteen benchmark dossiers. Run
+`python scripts/mathematical_report.py --check` to detect stale generated
+mathematical tables. Each native CI workflow verifies all 628 embedded K3
+certificates using an independent Python checker.
+
 The engine requires Python 3.10+ and no third-party Python packages. Install Node
 22 or 24 for the JavaScript checks. CI uses Python 3.10 and 3.14 with Node 24.
 

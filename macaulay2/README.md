@@ -1,5 +1,11 @@
 # HassettLattices for Macaulay2
 
+`k3Certificate(l)` returns an exact whole-lattice decision with an explicit
+primitive admissible marking or arithmetic obstruction. Positive searches
+increase their bound under one shared resource budget; `k3Witness(l,bound)`
+retains its bounded-search meaning. See the [mathematical audit](../docs/math-audit.md)
+and [benchmark dossiers](../docs/benchmark-components.md).
+
 A native implementation of Yang--Yu Algorithm 7.6, classifying all reduced
 components of intersections of distinct Hassett divisors. It retains every
 saturation origin and exact integral inclusion/isometry certificate, with

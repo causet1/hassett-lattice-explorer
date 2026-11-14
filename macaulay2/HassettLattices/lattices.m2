@@ -210,6 +210,22 @@ k3Witness(Thing, ZZ) := o -> (l, bound) -> (
     found := markings((hassettLattice l)#"gram", bound, true, newBudget o);
     if #found == 0 then null else first found)
 
+k3Certificate = method(Options => {MaxWork => 5000000, TimeLimit => 60})
+k3Certificate Thing := o -> l -> (
+    g := (hassettLattice l)#"gram";
+    budget := newBudget o;
+    association := k3Association(g, budget);
+    bound := 0;
+    witness := null;
+    if association#"admissible" then (
+        bound = 16;
+        while witness === null do (
+            found := markings(g, bound, true, budget);
+            if #found == 0 then bound = 2*bound else witness = first found));
+    checkTime budget;
+    new HashTable from {"association" => association, "witness" => witness,
+        "search_bound" => bound})
+
 hassettInvariants = method(Options => {MaxWork => 5000000, TimeLimit => 60})
 hassettInvariants Thing := o -> l -> (
     g := (hassettLattice l)#"gram";

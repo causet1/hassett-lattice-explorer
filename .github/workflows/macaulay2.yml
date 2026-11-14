@@ -27,6 +27,10 @@ jobs:
         run: python3 scripts/validate_macaulay2.py
       - name: Command-line integration
         run: python3 scripts/test_macaulay2_cli.py
+      - name: Constructive K3 certificates
+        run: |
+          M2 --script macaulay2/export-k3-certificates.m2 "$GITHUB_WORKSPACE/web/catalogue.json" "$GITHUB_WORKSPACE/build/macaulay2-validation/k3-certificates.json"
+          python3 scripts/verify_k3_certificates.py build/macaulay2-validation/k3-certificates.json
       - name: Install package and check documentation examples
         run: M2 --script macaulay2/build-docs.m2
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -35,5 +39,6 @@ jobs:
           name: macaulay2-validation
           path: |
             build/macaulay2-validation/validation.json
+            build/macaulay2-validation/k3-certificates.json
             build/macaulay2-docs/share/doc/Macaulay2/HassettLattices/
           if-no-files-found: warn

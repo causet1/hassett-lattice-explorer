@@ -135,6 +135,19 @@ const UNLIMITED = Limits(; max_work = nothing, timeout_seconds = nothing)
     ) == expected
     @test k3_witness(l, 100).admissible
     @test k3_witness(l, 7) === nothing
+    certificate = k3_certificate(l)
+    @test certificate.association.admissible
+    @test certificate.witness.discriminant <= certificate.search_bound
+    @test gcd(certificate.witness.vector[2], certificate.witness.vector[3]) == 1
+    split_bad = MarkedLattice(ZZ[3 0 0; 0 4 0; 0 0 6])
+    @test k3_certificate(split_bad).witness === nothing
+    @test !k3_certificate(split_bad).association.admissible
+    split_good = MarkedLattice(ZZ[3 0 0; 0 4 0; 0 0 10])
+    @test k3_certificate(split_good).witness.discriminant == 42
+    @test_throws ResourceLimitError k3_certificate(
+      split_good;
+      limits = Limits(max_work = 1),
+    )
     @test_throws ArgumentError MarkedLattice([3 0 0; 0 3 0; 0 0 4])
     @test_throws ArgumentError change_basis(l, [1 0 0; 0 2 0; 0 0 1])
   end

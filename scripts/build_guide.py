@@ -71,10 +71,15 @@ def main():
             "--include-in-header=" + str(DOCS / "guide_header.tex"),
             "--variable=documentclass:article", "--variable=fontsize:11pt",
             "--variable=papersize:a4", "--variable=geometry:margin=26mm",
-            "--variable=mainfont:Latin Modern Roman",
-            "--variable=sansfont:Latin Modern Sans",
-            "--variable=monofont:Latin Modern Mono",
-            "--variable=mathfont:Latin Modern Math", "--variable=linestretch:1.04",
+            # TeX-distributed filenames work without registering fonts with
+            # the host OS (notably older macOS/CoreText installations).
+            "--variable=mainfont:lmroman10-regular.otf",
+            "--variable=mainfontoptions:BoldFont=lmroman10-bold.otf,ItalicFont=lmroman10-italic.otf,BoldItalicFont=lmroman10-bolditalic.otf",
+            "--variable=sansfont:lmsans10-regular.otf",
+            "--variable=sansfontoptions:BoldFont=lmsans10-bold.otf,ItalicFont=lmsans10-oblique.otf,BoldItalicFont=lmsans10-boldoblique.otf",
+            "--variable=monofont:lmmono10-regular.otf",
+            "--variable=monofontoptions:ItalicFont=lmmono10-italic.otf",
+            "--variable=mathfont:latinmodern-math.otf", "--variable=linestretch:1.04",
             "--output=" + str(DOCS / "mathematics.tex"),
         ]
         run(command, env=env, cwd=ROOT)

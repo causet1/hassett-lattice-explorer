@@ -218,10 +218,15 @@ function primitive_markings(
   admissible_only::Bool = false,
   limits::Limits = Limits(),
 )
-  g, b = _marked(l).gram, _integer(bound)
+  result =
+    _primitive_markings(_marked(l).gram, bound, admissible_only, Budget(limits))
+  return result
+end
+
+function _primitive_markings(g, bound, admissible_only, budget)
+  b = _integer(bound)
   b >= 0 || throw(ArgumentError("The bound must be nonnegative"))
   b < 8 && return LabelEmbedding[]
-  budget = Budget(limits)
   binary = Hecke.integer_lattice(; gram = schur_form(g), cached = false)
   vectors = backend(() -> Hecke.short_vectors(binary, 8, b, ZZRingElem), budget)
   found = LabelEmbedding[]
@@ -255,6 +260,35 @@ end
 function k3_witness(l, bound = 10000; limits::Limits = Limits())
   markings = primitive_markings(l, bound; admissible_only = true, limits)
   return isempty(markings) ? nothing : first(markings)
+end
+
+"""
+    k3_certificate(l; limits=Limits())
+
+Return `(association, witness, search_bound)`. A positive decision includes a
+primitive admissible `LabelEmbedding`; a negative decision includes the exact
+arithmetic obstructions and `witness = nothing`. Doubling discriminant bounds
+exhausts the positive search, using Hecke and one shared work/time budget.
+Resource exhaustion throws `ResourceLimitError`, never a negative decision.
+This certifies an untwisted K3 association, not rationality.
+"""
+function k3_certificate(l; limits::Limits = Limits())
+  g, budget = _marked(l).gram, Budget(limits)
+  association = _k3_association(g, budget)
+  bound, witness = ZZ(0), nothing
+  if association.admissible
+    bound = ZZ(16)
+    while witness === nothing
+      found = _primitive_markings(g, bound, true, budget)
+      if isempty(found)
+        bound *= 2
+      else
+        witness = first(found)
+      end
+    end
+  end
+  check_time(budget)
+  return (association = association, witness = witness, search_bound = bound)
 end
 
 """Return determinant, Smith invariants, h-divisibility, and the K3 criterion."""

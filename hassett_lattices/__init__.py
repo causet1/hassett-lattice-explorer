@@ -12,6 +12,9 @@ from .core import (
     h_fixed_isometry,
     intersection_components,
     lattice_k3_association,
+    primitive_markings,
+    k3_witness,
+    k3_certificate,
     norm_two_vector,
     valid_discriminant,
 )
@@ -22,4 +25,5 @@ __all__ = [
     "Limits", "ResourceLimitError", "admissible_discriminant", "determinant",
     "h_fixed_isometry", "intersection_components", "lattice_k3_association",
     "norm_two_vector", "valid_discriminant",
+    "primitive_markings", "k3_witness", "k3_certificate",
 ]

@@ -2,7 +2,7 @@
 title: "Hassett divisors: from lattices to components"
 subtitle: "An exact algorithm, reproducible computations, and the K3 connection"
 author: "Hassett Lattice Explorer"
-date: "12 November 2026"
+date: "14 November 2026"
 lang: en-US
 ---
 
@@ -12,7 +12,9 @@ Given two distinct nonempty Hassett divisors, this project computes the irreduci
 
 The implementation is an arithmetic realization of Yang--Yu's Algorithm 7.6 [YY]. Its two essential features are exhaustive enumeration of allowable overlattices and identification up to integral isometry preserving the distinguished class. Counting positive definite Gram matrices alone does not solve the problem.
 
-Everything in the arithmetic engine uses integers. There is no floating-point positivity test, numerical lattice reduction, random search, external algebra system, or database of component answers. The published answers are used only in the regression tests. A computation that exceeds its configured resource budget raises an error rather than reporting a partial list as complete.
+All classification decisions use exact arithmetic. Python supplies a standalone reference engine; Julia reuses Hecke/Nemo, and Macaulay2 reuses its exact arithmetic and lattice facilities. The published answers are used in regression tests rather than as a database of component answers. A computation that exceeds its configured resource budget raises an error rather than reporting a partial list as complete.
+
+The source release includes a [mathematical audit](math-audit.md) tracing every geometric hypothesis and an independent enumeration using general Hermite inclusion matrices. The [nineteen benchmark dossiers](benchmark-components.md) supply reproducible basis changes, K3 witnesses, and theorem-specific rationality statements.
 
 ## The geometric input
 
@@ -247,11 +249,13 @@ An intersection can reveal an admissible label that neither input provides. In $
 
 A positive result persists throughout the component: a primitive admissible label in $M$ remains primitive after a primitive inclusion $M\hookrightarrow A(X)$. A negative result concerns cubic fourfolds with $A(X)=M$, hence the very general point of that component. It must not be extended to every point: higher-rank specializations can acquire an admissible label.
 
+The Python and Julia function `k3_certificate` and Macaulay2's `k3Certificate` make this decision constructive. An affirmative answer contains a primitive vector and its rank-two Gram matrix; a negative answer contains the arithmetic obstruction. Increasing discriminant bounds exhaust the witness search, under one shared resource budget. The older bounded witness functions can return no result within their bound even when an admissible marking exists. Resource exhaustion is never presented as a negative mathematical result.
+
 # Rationality: geometric constructions and the limits of the output
 
 The lattice calculation identifies algebraic Hodge conditions. It does not produce a birational map to projective space. The historical Hassett/Kuznetsov picture links untwisted K3 associations, geometric K3 categories, and rationality; this project does not turn that picture into an unconditional numerical equivalence.
 
-There are concrete positive results. Pfaffian cubic fourfolds are classical rational examples in $\mathcal C_{14}$. Russo--Staglianò's constructions using congruences of five-secant conics establish rationality in the families with labels 14, 26, and 38 [RS]. These are geometric constructions in addition to lattice admissibility. Their existence explains why the requested intersections are informative test cases.
+There are concrete positive results. Every smooth cubic in $\mathcal C_{14}$ is rational by Bolognesi--Russo--Staglianò [BRS, Theorems 2.9 and 3.4], and also by [RS, Theorem 2]. Every smooth cubic in $\mathcal C_{26}$ is rational by [RS, Theorem 4]. These geometric results apply to every member of both requested plane intersections. They are stronger than a statement about a general member of a divisor, which alone would not establish rationality on every intersection component.
 
 For a cubic containing a plane $P$, projection from the plane gives a quadric surface fibration over $\mathbb P^2$. The residual quadric class is $Q=o-P$. An algebraic class with odd intersection with $Q$ supplies the classical rational-section criterion, hence rationality; with smooth discriminant, the same condition is expressed by vanishing of the Clifford Brauer class on the degree-two K3 discriminant cover [A, Section 3.1].
 
@@ -259,7 +263,11 @@ In the normalized $\mathcal C_8\cap\mathcal C_{14}$ matrix,
 
 $$Q\cdot o=2,\qquad Q\cdot P=-2,\qquad Q\cdot u_2=1-t.$$
 
-Thus an odd pairing occurs exactly when $t$ is even, assuming this rank-three lattice is the full algebraic lattice. For $t=-1$, the determinant is 32 and this section criterion fails. Nevertheless, [ABBVA, Theorem A] proves that the general member of that component is pfaffian and rational, with nontrivial Clifford invariant. Failure of one rationality construction is therefore not an irrationality proof. This is a particularly concrete reason to keep Brauer, K3, and rationality indicators separate.
+Thus an odd pairing occurs exactly when $t$ is even, assuming this rank-three lattice is the full algebraic lattice. More explicitly, $(t/2)o+u_2$ pairs to one with $Q$ for even $t$. For $t=-1$, the determinant is 32 and this section criterion fails. Under the good-plane hypothesis, the Clifford invariant is nontrivial [ABBVA, Theorem A], although the cubic is rational by [BRS]. We use this later rationality proof: BRS Section 3 addresses a gap involving openness in the earlier pfaffian argument, and Theorem 3.7 shows that the pfaffian locus is not open in $\mathcal C_{14}$. Failure of one rationality construction is therefore not an irrationality proof.
+
+For $\mathcal C_8\cap\mathcal C_{26}$, Awada's parameter is $t+2$, so her even-parameter criterion agrees with even $t$ [A, Theorem 3.3]. The statement about the Brauer class requires a good plane and the specified full rank-three algebraic lattice. An existing section class persists at higher-rank specializations; failure of the criterion at rank three need not persist.
+
+Two components of $\mathcal C_{12}\cap\mathcal C_{20}$ also have unconditional rationality conclusions. In the normalized order $(20,12)$, the primitive vector $u_1-u_2$ has label $26$ at $t=1$ and label $14$ at $t=3$. The entire corresponding loci therefore lie in $\mathcal C_{26}$ and $\mathcal C_{14}$, respectively. The other four component lattices have a content-four obstruction to untwisted K3 admissibility. This computation does not decide their rationality.
 
 ## The categorical bridge
 
@@ -271,13 +279,13 @@ The residual category $\operatorname{Ku}(X)$ is the Kuznetsov component. Its Ser
 
 Addington--Thomas established generic agreement between Hassett's Hodge-theoretic K3 condition and the existence of an untwisted geometric K3 category [AT]. This historical result explains why the arithmetic admissibility test belongs in a discussion of rationality. The explorer computes the lattice condition; it does not construct a derived equivalence, compute the Kuznetsov component, or establish the conjectured equivalence with rationality.
 
-## Current context, checked 12 November 2026
+## Current context, checked 14 November 2026
 
 The older statement that no irrational smooth complex cubic fourfold is known is no longer appropriate. Katzarkov--Kontsevich--Pantev--Yu prove that a very general cubic fourfold is irrational using Hodge atoms [KKPY, current arXiv version dated 6 March 2026]. Guéré's September 2026 version proves that rationality implies an isomorphism
 
 $$H^4(X,\mathbb Q)_{\mathrm{prim}}\simeq H^2(S,\mathbb Q)(-1)$$
 
-for a projective K3 surface $S$ [G, Theorem 63]. This statement is explicitly about rational Hodge structures. It should not silently be substituted for an integral polarized Hassett association: the integral lattice and its pairing contain extra information. The program invokes neither result in its correctness argument, and its K3 flag is never labeled a rationality decision.
+for a projective K3 surface $S$ [G, Theorem 63]. This statement is explicitly about rational Hodge structures. It should not silently be substituted for an integral polarized Hassett association: the integral lattice and its pairing contain extra information. The twist here is a Tate twist, not a Brauer twist. These arXiv preprints provide context; the program invokes neither result in its correctness argument and derives no additional rationality or irrationality decision from them.
 
 # Using and interpreting the explorer
 
@@ -299,9 +307,11 @@ The table records the published component counts and the sorted discriminants of
 | $\mathcal C_{20}\cap\mathcal C_{12}$ | 6 | 20, 32, 53, 68, 77, 80 | [YY], Theorem 7.11 |
 | $\mathcal C_{20}\cap\mathcal C_{38}$ | 17 | 45, 77, 92, 120, 133, 157, 168, 188, 197, 213, 220, 232, 237, 245, 248, 252, 253 | [YY], Theorem 7.9 |
 
-The automated checks also cover input rejection, swapping the two discriminants, exact isometry, explicit root witnesses, primitive inclusion certificates, the index-two example above, and the split/nonsplit K3 criterion. A JavaScript interaction harness exercises the explorer's event logic and data handling with 55 assertions. Live-browser rendering, downloads, and clipboard behavior remain unverified.
+The automated checks also cover input rejection, swapping the two discriminants, exact isometry, explicit root witnesses, primitive inclusion certificates, the index-two example above, and the split/nonsplit K3 criterion. The source release adds the general Hermite audit and independent verification of constructive K3 certificates. Current test counts and source fingerprints are recorded by the release validator rather than fixed in this guide. Live-browser rendering, downloads, and clipboard behavior remain separate checks.
 
 # References
+
+**[BRS]** Michele Bolognesi, Francesco Russo, and Giovanni Staglianò, *Some loci of rational cubic fourfolds*, arXiv version 6, 1 June 2018. Theorems 2.9, 3.4 and 3.7. [arXiv:1504.05863v6](https://arxiv.org/abs/1504.05863v6).
 
 **[H]** Brendan Hassett, *Special cubic fourfolds*, Compositio Mathematica **120** (2000), 1--23. Theorems 1.0.1, 1.0.2 and 5.1.3. [doi:10.1023/A:1001706324425](https://doi.org/10.1023/A:1001706324425).
 

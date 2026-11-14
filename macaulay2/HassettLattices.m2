@@ -15,6 +15,7 @@ if take(join(apply(separate("\\.", version#"VERSION"), value), {0,0,0}),3) <
     {1,26,5} then error "HassettLattices requires Macaulay2 1.26.05 or later"
 
 export {
+    "k3Certificate",
     "MarkedHassettLattice", "HassettResult", "HassettResourceLimitError", "hassettLattice",
     "hassettGram", "hassettDiscriminant", "hassettComponents",
     "validHassettDiscriminant", "validHassettDiscriminants",

@@ -1,5 +1,11 @@
 # Hassett Lattice Explorer
 
+The [mathematical completion audit](docs/math-audit.md) records the full
+lattice-to-component argument, an independent Hermite saturation audit, and
+constructive K3 certificates in all three languages. The [19 benchmark
+component dossiers](docs/benchmark-components.md) give verified published
+bases and precise rationality conclusions, with [reproducible JSON](docs/benchmark-components.json).
+
 This private repository collects the supplied research problem, algorithm note, and the existing website source. Start with [the problem and expected outcome](PROBLEM.md), [the algorithm from the supplied PDF](ALGORITHM.md), or [the website and source provenance](WEBSITE.md). The original [PDF](references/hassett-intersection-algorithm.pdf), [problem screenshot](references/problem-statement.png), and [source ZIP](references/original-source-release.zip) are preserved.
 
 Repository import checks: **19 Python tests and 192 JavaScript assertions passed**. The ZIP's 33 project files matched the retrieved website source byte for byte. See [the import record](IMPORT-VERIFICATION.md) for the precise scope of this check; the earlier release reports below are retained historical records.

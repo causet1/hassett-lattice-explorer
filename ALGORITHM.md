@@ -85,7 +85,7 @@ Include $n=1,a=b=0$, which recovers $M$ itself. Retain nonmaximal successful ext
 
 ### Solving the linear conditions before the norm test
 
-Both implementations now avoid scanning all $n^2$ residue pairs. Write
+All three implementations avoid scanning all $n^2$ residue pairs. Write
 $p_0=\varepsilon_1$, $q_0=\varepsilon_2$, and $s_1=(d_1+p_0)/3$.
 The linear conditions are
 

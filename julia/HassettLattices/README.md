@@ -1,5 +1,11 @@
 # HassettLattices.jl
 
+`k3_certificate(l)` returns an exact whole-lattice decision with an explicit
+primitive admissible marking or arithmetic obstruction. Positive searches
+increase their bound under one shared resource budget; the older `k3_witness`
+remains a bounded search. See the repository's [mathematical audit](../../docs/math-audit.md)
+and [benchmark dossiers](../../docs/benchmark-components.md).
+
 Exact classification of the reduced components of intersections of two
 distinct Hassett divisors, implementing Yang--Yu Algorithm 7.6. The package
 uses **Hecke and Nemo/FLINT**, with arbitrary-size integers throughout all
