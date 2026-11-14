@@ -1,0 +1,171 @@
+{
+  "release": "1.1.0",
+  "license": "MIT",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 94,
+      "sha256": "fa76dce09b1e27c8a9af79be58612f6c052c59251e50c25afb287ad89853600b"
+    },
+    {
+      "path": "CITATION.cff",
+      "bytes": 580,
+      "sha256": "e41fa90ca3968d6da46fdcc1c4e23c5a2435b73327307b2babffc92cbc7f7323"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1094,
+      "sha256": "0d17d1738795dbd15ed8bc37e063e02f38065890815bf975c8553b730968bcda"
+    },
+    {
+      "path": "README.md",
+      "bytes": 13880,
+      "sha256": "e6d131e36083296a51ee69c83a656f2f9fff2da90d76d17ce91a16516de6bbde"
+    },
+    {
+      "path": "docs/catalogue-verification-500.json",
+      "bytes": 3960,
+      "sha256": "51e0859dcf461c940a9ba1f64ca114192e9e90b89c3f136b5cf7832f8c7ddc11"
+    },
+    {
+      "path": "docs/expanded-catalogue.md",
+      "bytes": 15562,
+      "sha256": "85b751da9340c0952e2d84c8d5382bd3b4cb41245966749f1f4767b1e7a31667"
+    },
+    {
+      "path": "docs/guide_header.tex",
+      "bytes": 3035,
+      "sha256": "ce4519c3c38391b4806ae9032d33576dd5ebb1b3e73d26efa3d9361e2dbd4439"
+    },
+    {
+      "path": "docs/implementation.md",
+      "bytes": 13637,
+      "sha256": "804d88f745d4c5ee3502a0847be0d54668375dd840a681c22ae788f1f358140c"
+    },
+    {
+      "path": "docs/mathematics.md",
+      "bytes": 25322,
+      "sha256": "1fef3b796b94df07535e9a176e80a8d87e6cb0bcecf041e0f936d763deab77df"
+    },
+    {
+      "path": "docs/mathematics.pdf",
+      "bytes": 105643,
+      "sha256": "73ae614674ce6d1f1dbc4c72e0be6b8724e6f537110ac4ecf44563d5961ae353"
+    },
+    {
+      "path": "docs/mathematics.tex",
+      "bytes": 33906,
+      "sha256": "487cef9d06396b471582cb76a55f4288bd2fecb205dd605162b5de7effd05ebc"
+    },
+    {
+      "path": "docs/references.bib",
+      "bytes": 2722,
+      "sha256": "80254904fb45bd87f65fd87745091e7a194595a2a172516888f7a841bbb91f42"
+    },
+    {
+      "path": "docs/validation.json",
+      "bytes": 8142,
+      "sha256": "a718745e4038efb1d400137093689290c971d7a0e3cca87db8f61c8be5bed130"
+    },
+    {
+      "path": "docs/web_validation.json",
+      "bytes": 1627,
+      "sha256": "a1cef23dc9f27bd9cbde4ac301ec068e4fede5280203ac531e63e2d5b72ba74f"
+    },
+    {
+      "path": "hassett_lattices/__init__.py",
+      "bytes": 661,
+      "sha256": "6b213e58895c960bfe32d2b4c7ce9e67f163d2650814e604cbe0a8f4a0b93df9"
+    },
+    {
+      "path": "hassett_lattices/__main__.py",
+      "bytes": 2620,
+      "sha256": "9c70dfb3c55ee007b154f2496f5d6e96c1bd6acb1871f2abb6e20e9b4800b65e"
+    },
+    {
+      "path": "hassett_lattices/core.py",
+      "bytes": 15739,
+      "sha256": "7240eb95f58767f09aa06289a93368553c02f5f73b806ad345bcb9af83d015a5"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 795,
+      "sha256": "0b6be31dae5a262d17fae98af1602d6fed6fd877f35f46a0aa050736d22157dc"
+    },
+    {
+      "path": "scripts/build_catalogue.py",
+      "bytes": 3433,
+      "sha256": "581b5fe6206ee7eaa115eb21ff258b26d2a8e3bd6bc7b34c97c7cf868e623da0"
+    },
+    {
+      "path": "scripts/build_guide.py",
+      "bytes": 5688,
+      "sha256": "4eb396ad8429378f51877ae6bebd0655fec85a2650c5624bc1e32965dbee8aa6"
+    },
+    {
+      "path": "scripts/build_hosted_site.py",
+      "bytes": 2473,
+      "sha256": "59ed31b6b26144488070cd57e81b056519ff59333bc0b92e186586125fa42686"
+    },
+    {
+      "path": "scripts/expand_catalogue.py",
+      "bytes": 16677,
+      "sha256": "5136621dca13cdca55253e3edb7bb961dcd10b1bdaff5ea23a392e6a4148db60"
+    },
+    {
+      "path": "scripts/package_catalogue.py",
+      "bytes": 11622,
+      "sha256": "eca62384eb6536eb6d1d6fcb34d70c99eafc115339ddadaf3a6fd96b84705a5d"
+    },
+    {
+      "path": "scripts/package_release.py",
+      "bytes": 3169,
+      "sha256": "e54cceed1725e2292871dfaeb479eb1861571bc52d1a0186a8de0b7f5c13b336"
+    },
+    {
+      "path": "scripts/plot_catalogue.py",
+      "bytes": 2824,
+      "sha256": "187b64919191ed5202c502e46caab3bb516f46906df4723e7cd7515f54fef856"
+    },
+    {
+      "path": "scripts/validate_release.py",
+      "bytes": 4523,
+      "sha256": "88f514e741afe5b31a774593c858992840537ffde8c85e454710cdcdc9ff0f8c"
+    },
+    {
+      "path": "scripts/verify_catalogue.py",
+      "bytes": 21195,
+      "sha256": "01e75ffefb662d93a5a68625aa7af08e1bd6929c035016084790b96d238eeed4"
+    },
+    {
+      "path": "scripts/verify_certificates.py",
+      "bytes": 14510,
+      "sha256": "7ef7300c3bf5b2745ee5c3a3e9b1faf244c3aa9166fdaa02d9f58da09c20aa32"
+    },
+    {
+      "path": "tests/test_explorer.cjs",
+      "bytes": 34560,
+      "sha256": "b2e97c67a1df0f830507cb1a26f150cbf865fca08ca95b4c89dec543105575cb"
+    },
+    {
+      "path": "tests/test_lattices.py",
+      "bytes": 9622,
+      "sha256": "99e4ebee6dcb73ac6e5b65691c51a9e1edf9a5e4e31e905afd8c452d68831059"
+    },
+    {
+      "path": "web/README.md",
+      "bytes": 8381,
+      "sha256": "74e38463d5ffcddd86e78ea15a95fb166baebfd5ccb58b9e0e2f1dc08907844b"
+    },
+    {
+      "path": "web/catalogue.json",
+      "bytes": 2144909,
+      "sha256": "015ee2356dd93b85a98e791b636be4e8412c3fa774af8bd7c198533b0b6bc188"
+    },
+    {
+      "path": "web/explorer.html",
+      "bytes": 699119,
+      "sha256": "b1456bbde2ef0426df8cd384c5719e66f68297787863228809ab4b4a84a1d9a0"
+    }
+  ]
+}
