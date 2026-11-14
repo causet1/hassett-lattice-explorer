@@ -85,6 +85,33 @@ class PublishedCases(unittest.TestCase):
 
 
 class CertificateTests(unittest.TestCase):
+    def test_quadratic_vector_search_matches_independent_boxes(self):
+        from hassett_lattices.core import _Budget, _vectors_with_norm_pairing
+        from math import isqrt
+        budget = _Budget(Limits(max_work=None, timeout_seconds=None))
+        rng = random.Random(20261114)
+        for _ in range(70):
+            base = [[3, 1, 1], [1, 3, 0], [1, 0, 5]]
+            # Unimodular shears exercise signed bounds and both coordinate axes.
+            u = [[1, rng.randrange(-3, 4), rng.randrange(-3, 4)],
+                 [0, 1, rng.randrange(-5, 6)], [0, 0, 1]]
+            if rng.randrange(2):
+                u = [[row[0], row[2], row[1]] for row in u]
+            g = congruence(base, u)
+            p, q = g[0][1:]
+            a, b, c = 3*g[1][1]-p*p, 3*g[1][2]-p*q, 3*g[2][2]-q*q
+            delta = a*c-b*b
+            norm, pairing = rng.randrange(0, 25), rng.randrange(-6, 7)
+            target = 3*norm-pairing*pairing
+            expected = []
+            if target >= 0:
+                for y in range(-isqrt(target*c//delta), isqrt(target*c//delta)+1):
+                    for z in range(-isqrt(target*a//delta), isqrt(target*a//delta)+1):
+                        xnum = pairing-p*y-q*z
+                        if a*y*y+2*b*y*z+c*z*z == target and xnum % 3 == 0:
+                            expected.append((xnum//3, y, z))
+            self.assertEqual(list(_vectors_with_norm_pairing(g, norm, pairing, budget)), expected)
+
     def test_root_bound_keeps_the_equality_case(self):
         g = [[3, 0, 0], [0, 2, 0], [0, 0, 4]]
         root = norm_two_vector(g)

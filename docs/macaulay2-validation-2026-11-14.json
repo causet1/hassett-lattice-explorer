@@ -1,0 +1,814 @@
+{
+  "schema_version": "1.0",
+  "verifier": "scripts/verify_catalogue.py",
+  "passed": true,
+  "index_file": "/Users/zengrf/Projects/hassett-lattice-explorer/build/macaulay2-validation/catalogue-index.json",
+  "index_sha256": "77a14e236c84622b5d4382c25ab3ec0e1678e70951786a810580e69794d32efe",
+  "max_discriminant": 42,
+  "discriminants_checked": 12,
+  "expected_pair_count": 66,
+  "pairs_checked": 66,
+  "pair_coverage_complete": true,
+  "file_hashes_checked": 66,
+  "gzip_files_checked": 66,
+  "starting_parameter_intervals_checked": 66,
+  "starting_lattices_checked": 654,
+  "independent_root_box_vectors_checked": 1004,
+  "statistics": {
+    "total_components": 628,
+    "total_component_records": 628,
+    "total_marked_origins": 640,
+    "total_k3_admissible_components": 541,
+    "total_k3_nonadmissible_components": 87,
+    "total_components_with_saturation": 48,
+    "total_proper_overlattice_origins": 50,
+    "total_duplicate_routes": 12,
+    "max_saturation_index": 3,
+    "min_component_determinant": 16,
+    "max_component_determinant": 532,
+    "total_bytes": 77113,
+    "total_uncompressed_bytes": 526687
+  },
+  "published_fixtures": [
+    {
+      "pair": [
+        8,
+        14
+      ],
+      "component_count": 5,
+      "discriminants": [
+        21,
+        29,
+        32,
+        36,
+        37
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        12,
+        20
+      ],
+      "component_count": 6,
+      "discriminants": [
+        20,
+        32,
+        53,
+        68,
+        77,
+        80
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        8,
+        26
+      ],
+      "component_count": 8,
+      "discriminants": [
+        29,
+        36,
+        48,
+        53,
+        61,
+        64,
+        68,
+        69
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        8,
+        38
+      ],
+      "component_count": 10,
+      "discriminants": [
+        36,
+        45,
+        61,
+        68,
+        80,
+        85,
+        93,
+        96,
+        100,
+        101
+      ],
+      "matched": true
+    },
+    {
+      "pair": [
+        20,
+        38
+      ],
+      "component_count": 17,
+      "discriminants": [
+        45,
+        77,
+        92,
+        120,
+        133,
+        157,
+        168,
+        188,
+        197,
+        213,
+        220,
+        232,
+        237,
+        245,
+        248,
+        252,
+        253
+      ],
+      "matched": true
+    }
+  ],
+  "elapsed_seconds": 0.226431,
+  "checks": [
+    "Exact coverage of every unordered distinct valid label pair through the bound.",
+    "No repeated label pairs, filenames, component ids, exact Gram matrices, or construction origins.",
+    "Every stored-file hash and byte count; decompression and uncompressed byte counts.",
+    "All pair files claim completed computations; no manifest failures or pending pairs.",
+    "The entire positive-definite starting-parameter interval and every root-free index-one origin.",
+    "All integral Gram, index, distinguished-class, primitive-label and basis-map certificates.",
+    "Independent exhaustive norm-two searches and exact whole-lattice K3 admissibility checks.",
+    "Per-pair statistics, aggregate statistics, and all included fixtures from the five-case published regression suite."
+  ],
+  "limitations": [
+    "Does not independently re-enumerate all admissible overlattices.",
+    "Does not independently prove pairwise nonisometry of distinct component representatives.",
+    "Classification completeness uses the documented exhaustive algorithm and cited geometric theorems; certificate checks alone do not prove it.",
+    "Hashes establish consistency with this index, not external authentication of the index.",
+    "Aggregate component totals count records per pair, not globally distinct geometric loci.",
+    "Counts are reduced irreducible components, not scheme multiplicities or rationality decisions."
+  ],
+  "cross_language": {
+    "passed": true,
+    "pairs": 66,
+    "components": 628,
+    "origins": 640,
+    "classification_audit": [
+      {
+        "pair": [
+          8,
+          12
+        ],
+        "components": 3,
+        "origins": 3,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          14
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          12
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          18
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          18
+        ],
+        "components": 4,
+        "origins": 4,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          18
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          20
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          12
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          20
+        ],
+        "components": 9,
+        "origins": 9,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          18
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          24
+        ],
+        "components": 5,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          24
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          24
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          24
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          24
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          26
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          12
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          26
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          18
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          26
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          24
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          30
+        ],
+        "components": 5,
+        "origins": 5,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          30
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          30
+        ],
+        "components": 7,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          24,
+          30
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          30
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          32
+        ],
+        "components": 10,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          12
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          32
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          18
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          32
+        ],
+        "components": 18,
+        "origins": 18,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          24
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 1
+      },
+      {
+        "pair": [
+          26,
+          32
+        ],
+        "components": 18,
+        "origins": 18,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          30
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          36
+        ],
+        "components": 6,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          36
+        ],
+        "components": 7,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          36
+        ],
+        "components": 8,
+        "origins": 8,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          36
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          36
+        ],
+        "components": 10,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          24,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          30,
+          36
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          36
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          38
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          12
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          38
+        ],
+        "components": 15,
+        "origins": 16,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          18
+        ],
+        "components": 11,
+        "origins": 11,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          38
+        ],
+        "components": 17,
+        "origins": 17,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          24
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          38
+        ],
+        "components": 23,
+        "origins": 23,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          30
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          38
+        ],
+        "components": 22,
+        "origins": 22,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          36
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          8,
+          42
+        ],
+        "components": 6,
+        "origins": 6,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          12,
+          42
+        ],
+        "components": 7,
+        "origins": 7,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          14,
+          42
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          18,
+          42
+        ],
+        "components": 9,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          20,
+          42
+        ],
+        "components": 10,
+        "origins": 10,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          24,
+          42
+        ],
+        "components": 11,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          26,
+          42
+        ],
+        "components": 12,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          30,
+          42
+        ],
+        "components": 13,
+        "origins": 13,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          32,
+          42
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          36,
+          42
+        ],
+        "components": 12,
+        "origins": 12,
+        "equal_determinant_comparisons": 0
+      },
+      {
+        "pair": [
+          38,
+          42
+        ],
+        "components": 16,
+        "origins": 16,
+        "equal_determinant_comparisons": 0
+      }
+    ],
+    "stress_cases": [
+      {
+        "pair": [
+          8,
+          96
+        ],
+        "components": 11,
+        "origins": 11,
+        "max_index": 2
+      },
+      {
+        "pair": [
+          446,
+          494
+        ],
+        "components": 525,
+        "origins": 541,
+        "max_index": 33
+      },
+      {
+        "pair": [
+          456,
+          488
+        ],
+        "components": 231,
+        "origins": 239,
+        "max_index": 68
+      },
+      {
+        "pair": [
+          498,
+          500
+        ],
+        "components": 171,
+        "origins": 173,
+        "max_index": 37
+      }
+    ]
+  },
+  "macaulay2_source_sha256": {
+    "macaulay2/HassettLattices/arithmetic.m2": "2b73c973d6f762b9b5db96514f1c191f60ab15cd42e2e86428ce033b89663dfb",
+    "macaulay2/HassettLattices/catalogue.m2": "70f8600202c6a96314e65cf05ffbf45499d3edc51f1ed8457ae71d5de7080dc1",
+    "macaulay2/HassettLattices/certificates.m2": "8546a7193d4e35ce553d2ad2d9541eec7dd2e6e67d8461fb8bcf11609c2e07b8",
+    "macaulay2/HassettLattices/cli.m2": "be3a425ec059ee8219494e2f40ec7ee86070525811816dff0526e87e28650baf",
+    "macaulay2/HassettLattices/documentation.m2": "0fe2ab7eab338d9130cc71a7017daa8d25d1a81d24dd8374f3031700c8b4556e",
+    "macaulay2/HassettLattices/intersection.m2": "24276debfe077a4a08797eacd17aac1a8dee2582a503f808ca87c3c11617603b",
+    "macaulay2/HassettLattices/lattices.m2": "0d1b432a8198db0d0e8a77a2d61425e9df9cf7a34ea706f732865897c085b3c9",
+    "macaulay2/HassettLattices/tests.m2": "166a6bac2016a1cf16296cb4a66c789ed06e33b8b7aefe342c07294e239425cf",
+    "macaulay2/HassettLattices.m2": "36f38f1ca96fc84b89e48138b1147f7fbe866801dcf8d98c8ca17214737adb64",
+    "macaulay2/benchmark-hassett.m2": "c5b49bebd8fad17fde416e381057192d672ecd6d5878f115dfb58513acd0fdb8",
+    "macaulay2/build-docs.m2": "8582a6c5e56b0af037b51091c5a400ef9500b9a0b8aa12f4a3760f63f282d719",
+    "macaulay2/test.m2": "133e054fd44cb044ee0b7172899487f6b24740eed4bcbbd8863371858991c4cd",
+    "macaulay2/validate.m2": "b95c70cffee3fcf1b878dcf952305ca6f39c0bb07f9b12eb40e084b49fc64b14"
+  },
+  "native_validation": {
+    "version": "1.26.06",
+    "test_groups": 5,
+    "package_tests_passed": true,
+    "documentation_installation_passed": true,
+    "cli_integration_passed": true,
+    "package_test_log": " -- capturing check(0, \"HassettLattices\") -- 2.08291s elapsed\n -- capturing check(1, \"HassettLattices\") -- 2.64206s elapsed\n -- capturing check(2, \"HassettLattices\") -- .863832s elapsed\n -- running   check(3, \"HassettLattices\") -- 14.4864s elapsed\n -- running   check(4, \"HassettLattices\") -- 11.6511s elapsed\n",
+    "documentation_log": " -- capturing example results for \"validHassettDiscriminant\"                 -- .396333s elapsed\n -- capturing example results for \"changeHassettBasis\"                       -- .24461s elapsed\n -- making example results for \"hassettResultData\"                           -- 7.61127s elapsed\n -- capturing example results for \"latticeK3Association\"                     -- .250168s elapsed\n -- capturing example results for \"hassettIntersection\"                      -- .260361s elapsed\n -- capturing example results for \"saturationIndices\"                        -- .239858s elapsed\n -- making example results for \"hassettCatalogueSummary\"                     -- 7.7287s elapsed\n -- capturing example results for \"HassettLattices\"                          -- .320377s elapsed\n -- capturing example results for \"hassettLattice\"                           -- .265734s elapsed\n -- capturing example results for \"hassettInvariants\"                        -- .254826s elapsed\n",
+    "cli_log": "Macaulay2 CLI: exact JSON, quoted paths, certificates, limits, and resume passed.\n"
+  }
+}

@@ -90,6 +90,9 @@ class ReleasePipelineTests(unittest.TestCase):
                 self.assertIn(prefix+'references/problem-statement.png', names)
                 self.assertIn(prefix+'julia/HassettLattices/Project.toml', names)
                 self.assertIn(prefix+'julia/HassettLattices/src/HassettLattices.jl', names)
+                self.assertIn(prefix+'macaulay2/HassettLattices.m2', names)
+                self.assertIn(prefix+'macaulay2/HassettLattices/cli.m2', names)
+                self.assertIn(prefix+'macaulay2/HassettLattices/documentation.m2', names)
                 self.assertFalse(any(n.endswith('/Manifest.toml') for n in names))
                 self.assertFalse(any('/build/' in n or '/.git/' in n for n in names))
 

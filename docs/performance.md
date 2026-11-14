@@ -6,7 +6,7 @@ and parity tests. It also groups component representatives by determinant and
 computes each accepted determinant once. The proof of equivalence, including
 the noninvertible case when 3 divides the index, is in
 [ALGORITHM.md](../ALGORITHM.md#solving-the-linear-conditions-before-the-norm-test).
-Both Python and Julia use these improvements.
+Python, Julia, and Macaulay2 use these improvements.
 
 Warm Julia benchmarks also motivated an exact Schur-form root bound. When
 `min(A,C)-abs(B)>6`, the binary form cannot take a value at most six on a
@@ -97,6 +97,59 @@ CI runs correctness and cross-language audits, without unstable
 wall-clock thresholds. Larger-range work should profile root enumeration,
 isometry and certificate serialization separately. Further filters must preserve
 marked isometry classes and every origin; process-level parallelism needs
-separate shard ownership and measured memory use before adoption. Macaulay2
-remains the next independent frontend, using this certificate contract and the
-published regression suite.
+separate shard ownership and measured memory use before adoption.
+
+## Quadratic equation search added with the Macaulay2 package
+
+The native Macaulay2 work yielded a further Python improvement. Instead of
+scanning a rectangle for `A*y^2 + 2*B*y*z + C*z^2 = T`, enumerate the coordinate
+with the smaller bound and test whether `A*T - (A*C-B^2)*z^2` is a square.
+Divisibility then gives every other coordinate. Python keeps its original
+loop for boxes of at most 25 points and sorts solutions in historical order,
+so every existing root and isometry certificate remains identical. See
+[the proof](../ALGORITHM.md#solving-the-binary-equation-without-scanning-a-rectangle).
+
+Fifteen warm Python medians against the already optimized `ed13fe4`:
+
+| Pair | Previous median | New median | Further speedup |
+| --- | ---: | ---: | ---: |
+| 8, 26 | 0.414 ms | 0.333 ms | 1.24x |
+| 8, 96 | 0.505 ms | 0.509 ms | 0.99x |
+| 446, 494 | 29.143 ms | 22.750 ms | 1.28x |
+| 456, 488 | 25.783 ms | 12.023 ms | 2.14x |
+| 498, 500 | 7.874 ms | 7.525 ms | 1.05x |
+
+The sub-millisecond cases are noisy; no improvement is claimed for `(8,96)`.
+At `(456,488)`, work fell from 37,131 to 9,922 units. The
+[raw benchmark](quadratic-search-benchmark-2026-11-14.json) includes samples,
+environment, and source hash. A fresh
+[full-range comparison](quadratic-search-comparison-500.json) again reproduced
+all 13,530 pairs, 1,636,925 component records, and 1,698,033 origins exactly,
+including all witnesses. This is regression agreement, not an independent
+classification proof for that entire range.
+
+## Native Macaulay2 implementation
+
+The [Macaulay2 package](../macaulay2/README.md) reuses GMP square roots through
+ForeignFunctions, LLLBases/NTL for unimodular preconditioning, Core for exact
+matrix arithmetic and Smith forms, and JSON's published parser and encoder.
+Its rank-three marked enumeration uses the quadratic identity above. A
+triangular integer surrogate lets Euclidean LLL handle large shears; its norm
+is provably within a factor four of the scaled Schur norm. All changes are
+certified and transported back, and final enumeration is exact. Native tests
+include shears of size `10^30` in both isometry directions.
+
+The [validation record](macaulay2-validation-2026-11-14.json) checks agreement
+with Python and independently audits all 66 pairs through 42: 628 components
+and 640 origins. Four larger/equal-determinant cases also pass certificates and
+agree, including index 68. Native package tests, CLI recovery tests, package
+installation, help-tree checks, and executable documentation run in CI.
+This Macaulay2 validation does not claim a full native sweep through 500.
+
+Use `M2 --script macaulay2/benchmark-hassett.m2` for seven warm medians. The
+[native benchmark](macaulay2-benchmark-2026-11-14.json) excludes startup,
+container launch, and JSON/gzip serialization. It records the Linux M2 runtime
+inside Docker on the local macOS host; its times are not directly comparable
+to bare-host Python or Julia timings. The package's primary value is native
+Macaulay2 algebra interoperability and independently checked implementation,
+not a claim that translation makes rank-three enumeration faster.

@@ -45,12 +45,12 @@ cross-language component/origin comparison, independent certificate validation,
 and the independent classification audit through 42. Mathematical comparison
 ignores nonunique root and isometry witnesses, which are checked separately.
 The package is installable from the repository subdirectory; registration in
-General and a Macaulay2 implementation remain separate work.
+General remains separate work. The Macaulay2 implementation is documented below.
 
 The [performance report](performance.md) describes the congruence optimization,
 baseline benchmarks, and exact regression comparison against the entire
 previously certified catalogue through 500. Source distributions and source ZIPs
-include the Julia package and exclude local Manifests and generated doc builds.
+include both native packages and exclude local Manifests and generated doc builds.
 The [native validation snapshot](julia-validation-2026-11-14.json) records 1,545
 passing Julia checks, documentation/doctests, 66 independently audited pairs,
 and four additional cross-language stress cases, including saturation index 68.
@@ -93,6 +93,26 @@ depends on the existing website remaining available; generation from scratch
 remains the independent fallback described in [expanded-catalogue.md](expanded-catalogue.md).
 On Python.org macOS installations, install the bundled CA certificates if HTTPS
 reports a missing certificate authority; do not disable TLS verification.
+
+## Macaulay2 package
+
+The native Macaulay2 package has its own test and documentation workflow:
+
+```sh
+M2 --script macaulay2/test.m2
+M2 --script macaulay2/build-docs.m2
+python3 scripts/validate_macaulay2.py
+python3 scripts/test_macaulay2_cli.py
+```
+
+The documentation build installs into `build/macaulay2-docs/`, executes every
+example, and checks the native help tree. Cross-language validation checks all
+66 pairs through 42 and four larger stress cases, including index 68. It reuses
+the independent certificate and classification auditors below. Native tests
+also cover exact large integers, transformed bases, limits, and catalogue
+recovery. See [Macaulay2 conventions](../macaulay2/CONTRIBUTING.md) for backend
+reuse and the small JSON compatibility interface. Source archives and release
+fingerprints include both native packages; no language runtime is bundled.
 
 ## Independent classification audit
 

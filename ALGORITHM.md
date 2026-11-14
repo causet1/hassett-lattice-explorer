@@ -116,7 +116,7 @@ transport and row/column conventions are documented in
 
 ### Vectors of prescribed norm
 
-Both engines first apply an inexpensive exact root-exclusion certificate. Write
+All three engines first apply an inexpensive exact root-exclusion certificate. Write
 the binary Schur form as $H(y,z)=Ay^2+2Byz+Cz^2$. Then
 
 $$H(y,z)\geq(\min(A,C)-|B|)(y^2+z^2).$$
@@ -136,6 +136,38 @@ Use $G^{-1}=\operatorname{adj}(G)/\det G$. An explicit exact bound is
 $$B_i=\operatorname{isqrt}\!\left(\left\lfloor\frac{m\operatorname{adj}(G)_{ii}}{\det G}\right\rfloor\right).$$
 
 Enumerate every integral vector in the box $-B_i\leq x_i\leq B_i$ and check the norm equation exactly. For root exclusion, set $m=2$ and search the entire lattice, not only $(h^2)^\perp$.
+
+### Solving the binary equation without scanning a rectangle
+
+For a prescribed norm and pairing, write the required binary value as $T$.
+With $\Delta=AC-B^2>0$,
+
+$$Ay^2+2Byz+Cz^2=T
+\quad\Longleftrightarrow\quad
+(Ay+Bz)^2=AT-\Delta z^2.$$
+
+Thus enumerate only $|z|\leq\lfloor\sqrt{AT/\Delta}\rfloor$. For each $z$,
+test whether $AT-\Delta z^2$ is a perfect square $k^2$ and whether
+$A\mid(-Bz\pm k)$. The resulting $y=(-Bz\pm k)/A$ are every solution;
+test the original congruence for the first coordinate. Handle $k=0$ once.
+Swap the two coordinates first when that reduces the loop bound.
+Python retains its cheap rectangle loop for boxes of at most 25 points and
+sorts the other outputs in the historical order, preserving every witness.
+Macaulay2 uses GMP integer square roots through ForeignFunctions.
+
+For large shears, Macaulay2 obtains an integral unimodular preconditioner from
+LLLBases and enumerates the exact transformed form. For
+$t=\lfloor\sqrt\Delta\rfloor$, use the integer matrix
+$M=\left(\begin{smallmatrix}A&B\\0&t\end{smallmatrix}\right)$.
+Then $\frac A4 v^THv\leq\|Mv\|^2\leq A v^THv$ because
+$\Delta/4\leq t^2\leq\Delta$. LLLBases reduces these Euclidean columns;
+it is not used as a Gram-metric reduction oracle. Every map is
+certified, and a preconditioner is retained only if it reduces the product of
+diagonal coefficients, hence the area of the coordinate bounds. Isometry
+searches also center the pairings with $h$ by integral shifts
+and transport the final witness back to the supplied coordinates. These basis
+changes preserve exhaustive coverage. Julia continues to use Hecke's general
+lattice enumerators and isometry algorithms.
 
 ### Isometry fixing the distinguished class
 

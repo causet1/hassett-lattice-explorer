@@ -24,7 +24,7 @@ def main():
     for path in must_exist:
         if not path.is_file():
             raise FileNotFoundError(f'Required validated artifact missing: {path.name}')
-    allowed_roots = {'hassett_lattices', 'julia', 'tests', 'scripts', 'docs', 'web', 'references', '.github'}
+    allowed_roots = {'hassett_lattices', 'julia', 'macaulay2', 'tests', 'scripts', 'docs', 'web', 'references', '.github'}
     allowed_files = {'LICENSE', 'README.md', 'PROBLEM.md', 'ALGORITHM.md', 'WEBSITE.md',
                      'IMPORT-VERIFICATION.md', 'pyproject.toml', 'MANIFEST.in', 'CITATION.cff', '.gitignore'}
     excluded_suffixes = {'.pyc', '.pyo', '.log', '.aux', '.out', '.toc'}

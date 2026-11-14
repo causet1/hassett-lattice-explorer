@@ -145,24 +145,50 @@ def _vectors_with_norm_pairing(g, norm, pairing, budget):
 
     Set H=3*B-p*p^t (the binary Schur form). For x=(x0,y,z),
       H(y,z)=3*norm-pairing^2, x0=(pairing-p1*y-p2*z)/3.
-    Cauchy--Schwarz in H gives the exact inverse-diagonal coordinate bounds.
+    Cauchy--Schwarz bounds one coordinate; an exact discriminant square test
+    solves the quadratic in the other. Sort in the historical (y,z) order so
+    root and isometry certificates remain byte-for-byte reproducible.
     """
     a, b, c = _schur(g)
     target = 3 * norm - pairing * pairing
     if target < 0:
         return
     delta = a * c - b * b
+    # Tiny boxes are cheaper than discriminant tests plus sorting. Keep the
+    # same exact search, with this measured constant-factor fast path.
     ymax = isqrt(target * c // delta)
     zmax = isqrt(target * a // delta)
     p, q = g[0][1], g[0][2]
-    for y in range(-ymax, ymax + 1):
-        for z in range(-zmax, zmax + 1):
-            budget.tick()
-            if a * y * y + 2 * b * y * z + c * z * z != target:
+    if (2 * ymax + 1) * (2 * zmax + 1) <= 25:
+        for y in range(-ymax, ymax + 1):
+            for z in range(-zmax, zmax + 1):
+                budget.tick()
+                if a * y * y + 2 * b * y * z + c * z * z == target:
+                    xnum = pairing - p * y - q * z
+                    if xnum % 3 == 0:
+                        yield (xnum // 3, y, z)
+        return
+    swapped = a > c
+    if swapped:
+        a, c = c, a
+        zmax = ymax
+    found = []
+    for z in range(-zmax, zmax + 1):
+        budget.tick()
+        square = a * target - delta * z * z
+        root = isqrt(square)
+        if root * root != square:
+            continue
+        for k in ((root,) if root == 0 else (-root, root)):
+            numerator = k - b * z
+            if numerator % a:
                 continue
-            xnum = pairing - p * y - q * z
+            y = numerator // a
+            yy, zz = (z, y) if swapped else (y, z)
+            xnum = pairing - p * yy - q * zz
             if xnum % 3 == 0:
-                yield (xnum // 3, y, z)
+                found.append((xnum // 3, yy, zz))
+    yield from sorted(found, key=lambda v: (v[1], v[2]))
 
 
 def _root(g, budget):

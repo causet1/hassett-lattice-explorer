@@ -13,5 +13,8 @@ def source_hashes(root):
                  if path.is_file() and path.suffix in ('.jl', '.toml', '.md')
                  and path.name != 'Manifest.toml'
                  and 'build' not in path.relative_to(root).parts)
+    paths.extend(path for path in (root/'macaulay2').rglob('*')
+                 if path.is_file() and path.suffix in ('.m2', '.md')
+                 and 'build' not in path.relative_to(root).parts)
     return {path.relative_to(root).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
             for path in sorted(paths)}

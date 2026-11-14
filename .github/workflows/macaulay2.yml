@@ -1,0 +1,39 @@
+name: Verify Macaulay2 package and cross-language certificates
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macaulay2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Debian's current M2 includes JSON, LLLBases and ForeignFunctions.
+    container: debian:sid-slim@sha256:5ac67a4d7c0de96e83873e4dd8f7ea3b507ba292fb2cce60a0c3f73322df5cae
+    steps:
+      - name: Install Macaulay2 and test tools
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends macaulay2 python3 git ca-certificates gzip
+          dpkg-query -W macaulay2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Native package tests
+        run: M2 --script macaulay2/test.m2
+      - name: Cross-language agreement and independent classification audit
+        run: python3 scripts/validate_macaulay2.py
+      - name: Command-line integration
+        run: python3 scripts/test_macaulay2_cli.py
+      - name: Install package and check documentation examples
+        run: M2 --script macaulay2/build-docs.m2
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: macaulay2-validation
+          path: |
+            build/macaulay2-validation/validation.json
+            build/macaulay2-docs/share/doc/Macaulay2/HassettLattices/
+          if-no-files-found: warn

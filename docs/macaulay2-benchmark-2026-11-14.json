@@ -1,0 +1,115 @@
+{
+  "architecture": "x86_64",
+  "macaulay2": "1.26.06",
+  "measurements": [
+    {
+      "components": 8,
+      "median_seconds": 0.016671762,
+      "pair": [
+        8,
+        26
+      ],
+      "samples_seconds": [
+        0.016059054,
+        0.016317744,
+        0.016435647,
+        0.067255375,
+        0.016671762,
+        0.016810924,
+        0.016855303
+      ],
+      "work_units": 122
+    },
+    {
+      "components": 11,
+      "median_seconds": 0.02344716,
+      "pair": [
+        8,
+        96
+      ],
+      "samples_seconds": [
+        0.023145973,
+        0.022963051,
+        0.072044027,
+        0.023003471,
+        0.02344716,
+        0.023931509,
+        0.02444937
+      ],
+      "work_units": 198
+    },
+    {
+      "components": 525,
+      "median_seconds": 1.035881089,
+      "pair": [
+        446,
+        494
+      ],
+      "samples_seconds": [
+        0.980272908,
+        1.078481504,
+        0.948187395,
+        1.037176063,
+        1.035881089,
+        0.959575254,
+        1.041967192
+      ],
+      "work_units": 5163
+    },
+    {
+      "components": 231,
+      "median_seconds": 0.437452448,
+      "pair": [
+        456,
+        488
+      ],
+      "samples_seconds": [
+        0.437204388,
+        0.437452448,
+        0.436869056,
+        0.439760941,
+        0.373285519,
+        0.467575228,
+        0.444663683
+      ],
+      "work_units": 2780
+    },
+    {
+      "components": 171,
+      "median_seconds": 0.18391312,
+      "pair": [
+        498,
+        500
+      ],
+      "samples_seconds": [
+        0.255780751,
+        0.181759994,
+        0.26240107,
+        0.183784106,
+        0.180994364,
+        0.253220522,
+        0.18391312
+      ],
+      "work_units": 1955
+    }
+  ],
+  "operating_system": "Linux",
+  "repeats": 7,
+  "scope": "Warm native M2 engine medians; excludes startup, Docker, and serialization.",
+  "host": "macOS 10.15.8 x86_64; Docker Linux container; isolated warm run",
+  "source_sha256": {
+    "macaulay2/HassettLattices/arithmetic.m2": "2b73c973d6f762b9b5db96514f1c191f60ab15cd42e2e86428ce033b89663dfb",
+    "macaulay2/HassettLattices/catalogue.m2": "70f8600202c6a96314e65cf05ffbf45499d3edc51f1ed8457ae71d5de7080dc1",
+    "macaulay2/HassettLattices/certificates.m2": "8546a7193d4e35ce553d2ad2d9541eec7dd2e6e67d8461fb8bcf11609c2e07b8",
+    "macaulay2/HassettLattices/cli.m2": "be3a425ec059ee8219494e2f40ec7ee86070525811816dff0526e87e28650baf",
+    "macaulay2/HassettLattices/documentation.m2": "0fe2ab7eab338d9130cc71a7017daa8d25d1a81d24dd8374f3031700c8b4556e",
+    "macaulay2/HassettLattices/intersection.m2": "24276debfe077a4a08797eacd17aac1a8dee2582a503f808ca87c3c11617603b",
+    "macaulay2/HassettLattices/lattices.m2": "0d1b432a8198db0d0e8a77a2d61425e9df9cf7a34ea706f732865897c085b3c9",
+    "macaulay2/HassettLattices/tests.m2": "166a6bac2016a1cf16296cb4a66c789ed06e33b8b7aefe342c07294e239425cf",
+    "macaulay2/HassettLattices.m2": "36f38f1ca96fc84b89e48138b1147f7fbe866801dcf8d98c8ca17214737adb64",
+    "macaulay2/benchmark-hassett.m2": "c5b49bebd8fad17fde416e381057192d672ecd6d5878f115dfb58513acd0fdb8",
+    "macaulay2/build-docs.m2": "8582a6c5e56b0af037b51091c5a400ef9500b9a0b8aa12f4a3760f63f282d719",
+    "macaulay2/test.m2": "133e054fd44cb044ee0b7172899487f6b24740eed4bcbbd8863371858991c4cd",
+    "macaulay2/validate.m2": "b95c70cffee3fcf1b878dcf952305ca6f39c0bb07f9b12eb40e084b49fc64b14"
+  }
+}
