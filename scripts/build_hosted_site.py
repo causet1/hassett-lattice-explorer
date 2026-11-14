@@ -28,6 +28,21 @@ def main():
     index_hash = hashlib.sha256(index_bytes).hexdigest()
     if report.get("index_sha256") != index_hash:
         raise ValueError("Verification report does not identify this exact catalogue index")
+    if (report.get("verifier") != "scripts/verify_catalogue.py"
+            or report.get("pair_coverage_complete") is not True
+            or report.get("pairs_checked") != index.get("pair_count")
+            or report.get("statistics") != index.get("statistics")):
+        raise ValueError("Verification coverage does not match this catalogue")
+    # A matching index alone does not prove that shards stayed unchanged since
+    # verification. Check every file before creating deployment assets.
+    for row in index["pairs"]:
+        key = '-'.join(map(str, sorted((row['d1'], row['d2']))))
+        expected = f'pairs/{key}.json' + ('.gz' if row.get('compression') == 'gzip' else '')
+        if row['path'] != expected:
+            raise ValueError('Unsafe or inconsistent catalogue path')
+        stored = (catalogue / expected).read_bytes()
+        if len(stored) != row['bytes'] or hashlib.sha256(stored).hexdigest() != row['sha256']:
+            raise ValueError(f'Shard changed after independent verification: {expected}')
     output = args.output.resolve()
     data = output / "data"
     data.mkdir(parents=True, exist_ok=True)
